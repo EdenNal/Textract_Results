@@ -1,0 +1,48 @@
+DOMINION BUREAU OF STATISTICS,Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Unnamed: 8,Unnamed: 9,Unnamed: 10,Unnamed: 11,Unnamed: 12,Unnamed: 13,Unnamed: 14,Unnamed: 15,Unnamed: 16,Unnamed: 17,Unnamed: 18,Unnamed: 19,Unnamed: 20,Unnamed: 21,Unnamed: 22,Unnamed: 23,Unnamed: 24,Unnamed: 25,Unnamed: 26,Unnamed: 27,Unnamed: 28,Unnamed: 29,Unnamed: 30,Unnamed: 31,Unnamed: 32,Unnamed: 33,Unnamed: 34,Unnamed: 35,Unnamed: 36,Unnamed: 37,Unnamed: 38
+HEALTH AND WELFARE DIVISION,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Summary of Cases of Notifiable Diseases in Canada, as reported by the Provincial Health Departments",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"for the week ended September 1, 1956, in comparison with the previous week 1, and the 5 year (1951-55) Median",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+No.,DISEASE,CANADA 2,,,,,,NFLD.,,,P.E.I.,,,N.S,,,N.B.,,,QUE.,,,ONT.,,,MAN.,,,SASK.,,,ALTA.,,,B.C.,,,No. 
+,,Report Week,Previous Week,Median 1951-55,Cumulative Total 3,,,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,
+,,,,,1956,1955,Median 1951-55,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1,Chickenpox,98,235,86,26680,24412,32611,-,3,-,2,-,-,13,5,1,..,..,..,7,11,21,53,96,30,13,5,8,..,..,12,..,..,2,10,15,17,1
+2,Diphtheria,2,-,1,62,68,91,-,-,-,-,-,-,-,-,-,-,-,-,1,-,-,-,-,-,1,-,-,-,-,-,-,-,-,-,-,6,2
+3,Dysentery: 4,18,11,11,435,432,432,-,-,-,-,-,-,-,-,-,2,2,..,..,3,1,2,-,2,3,-,-,2,-,-,3,-,-,6,6,-,3
+4,(a) Amoebic,-,-,-,-,2,7,-,-,-,-,-,-,-,-,-,..,..,..,..,..,..,-,-,-,-,-,-,-,-,-,-,-,-,-,-,6,4
+5,(b) Bacillary,18,11,11,435,430,430,-,-,-,-,-,-,-,-,-,2,2,..,..,3,1,2,-,2,3,-,-,2,-,-,3,-,-,6,6,-,5
+6,"Encephalitis, infectious",2,2,2,17,18,23,-,-,-,..,..,..,-,-,-,-,-,-,..,2,..,..,..,..,-,-,-,2,-,1,-,-,-,-,-,-,6
+7,"Influenza, epidemic",126,55,59,8805,36652,9049,..,..,..,39,9,..,86,43,28,-,-,-,-,-,-,-,-,-,1,2,1,-,-,-,..,..,..,-,1,-,7
+8,Measles,152,246,121,41208,43678,47337,2,-,1,1,-,1,17,13,6,..,..,1,27,52,40,60,156,28,5,9,11,..,..,7,10,7,16,30,9,16,8
+9,"Meningitis, meningococcal",-,2,3,229,209,189,1,2,-,..,..,..,-,-,-,-,-,-,-,-,-,3,-,-,-,-,-,-,-,-,..,..,..,-,-,1,9
+10,Mumps,96,127,98,21647,19928,28321,-,-,-,-,-,-,6,12,1,..,..,..,3,14,20,67,60,62,5,9,11,..,..,6,..,..,2,15,32,15,10
+11,"Poliomyelitis, epidemic: 4",31,26,203,245,599,1261,-,-,1,-,-,3,-,-,8,1,3,4,7,7,19,7,10,61,-,2,4,1,-,18,9,2,12,6,2,11,11
+12,(a) With paralysis,15,17,83,134,318,513,-,-,1,-,-,1,-,-,5,-,1,-,7,5,7,5,6,23,-,2,3,(6),-,4,3,1,1,-,2,6,12
+13,(b) Without paralysis,15,7,101,91,227,695,-,-,-,-,-,-,-,-,-,1,2,4,-,-,4,2,4,38,-,-,1,(6),-,4,6,1,3,6,-,5,13
+14,Rubella,103,73,37,49134,17409,9035,1,1,-,..,..,..,3,2,1,..,..,..,1,25,5,74,25,12,4,-,-,..,1,1,8,6,7,12,13,9,14
+15,"Scarlet fever, etc. 5 **",83,77,60,8877,6422,9419,1,-,-,31,3,2,32,35,8,1,1,-,6,7,20,8,19,11,2,-,5,-,3,6,-,6,8,2,3,6,15
+16,Smallpox,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,16
+17,"Tuberculosis: 4,6",184,213,175,6218,6543,7110,11,6,1,-,1,1,8,-,1,9,7,10,87,58,68,17,56,11,6,40,12,13,11,6,11,18,17,22,16,21,17
+18,(a) Pulmonary,154,142,156,5039,5356,5717,11,6,1,-,1,-,7,-,1,9,5,9,86,56,66,(6),(6),(6),5,38,12,8,8,6,11,13,14,17,15,20,18
+19,(b) Non-pulmonary,13,15,10,390,419,365,-,-,-,-,-,-,1,-,-,-,2,-,1,2,2,(6),(6),(6),1,2,-,5,3,-,..,5,..,5,1,3,19
+20,Typhoid and paratyphoid,7,14,10,287,232,314,-,-,-,-,-,-,-,-,-,-,-,-,5,10,5,2,4,1,-,-,-,-,-,-,-,-,-,-,-,-,20
+21,Undulant fever,-,4,2,103,90,90,-,-,-,-,-,-,-,-,-,..,..,..,..,2,1,-,1,1,-,1,-,-,-,-,..,..,..,-,-,-,21
+22,Venereal diseases:,365,378,333,10929,11395,11963,10,4,9,3,-,-,6,8,11,3,5,3,64,78,88,49,47,59,28,25,29,27,25,23,79,73,55,96,113,51,22
+23,"(a) Syphilis, primary",-,2,4,66,75,145,-,-,-,-,-,-,-,-,-,-,-,-,-,-,1,-,-,1,-,1,-,-,-,-,-,-,1,-,1,-,23
+24,(b) '' secondary,1,1,3,30,32,78,-,-,-,-,-,-,-,-,-,-,-,-,-,1,-,-,-,-,-,-,-,-,-,-,1,-,1,-,-,-,24
+25,(c) '' other,37,28,36,1231,1613,1778,-,1,2,-,-,-,3,-,2,-,-,1,19,14,9,3,8,11,2,1,1,1,-,1,2,-,1,7,4,4,25
+26,(d) Gonorrhoea,327,347,289,9599,9660,9753,10,3,6,3,-,-,3,8,8,3,5,2,45,63,68,46,39,45,26,23,27,26,25,21,76,73,52,89,108,42,26
+27,(e) Other venereal diseases 8,-,-,-,3,15,15,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,27
+28,Whooping cough,137,130,211,5636,9088,5572,-,-,-,9,1,-,3,-,2,-,-,-,34,61,69,25,14,70,8,6,9,13,5,13,6,3,17,39,40,11,28
+"(1) Figures adjusted for delayed reports. (2) Exclusive of Yukon and Northwest Territories. (3) Total accumulated to the end of the current week from the first week ending in January of the year stated. (4) Includes cases where type was not specified. (5) Scarlet fever includes cases of streptococcal sore throat. (6) Type not specified. (7) Includes chancroid, granuloma inguinale and lymphogranuloma venereum.   .. Not reportable",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"THE SITUATION IN THE UNITED STATES (Source: ""MORBIDITY AND MORTALITY-WEEKLY REPORT"", U.S. National Office of Vital Statistics): Number of reported cases for the current week (previous week in parentheses):",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Diphtheria,12 (18),Measles,1015 (1244),"Meningitis, other",33 (31),"Poliomyelitis, with paralysis",288 (375),Smallpox,- (-),Undulant fever,20 (10),,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Encephalitis, infectious",81 (35),Meningococcal infections,24 (28),"Poliomyelitis, acute",866 (943),"Poliomyelitis, without paralysis",411 (377),Typhoid fever,48 (48),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"The number of cases of poliomyelitis reported for the current week is 866 as compared with 943 for the previous week. This number is less than the figure for the same week in all prior years since 1947. This also is the first week in the current polio season that the number of reported cases is less than the number reported for the previous week. The peak week last yeear was the week ended August 27 and the 5-year median peak week, the second week in September. The number reported in Chicago for the current week is 62 as compared with 100 for the previous week. This is the third successive week in which reported cases have been fewer in number. Forty of the 62 cases were paralytic. Incidence in the state of Illinois exclusive of Chicago dropped slightly this week 67 cases to 58 cases. 
+To date typhoid fever cases have been reported as follows: Missouri, 1 fatal case confirmed by culture (phage type C-2), 2 other clinically confirmed cases, and 4 suspect cases; Oklahoma, 1 serologically confirmed case, and 4 possible cases; Kansas, 1 suspect clinical case; California, 2 cases confirmed by culture (phage type C-2); Louisiana, 2 cases confirmed by culture (1 phage type C-2), 3 suspect cases, and 1 death -- a young man with chronic infection not confirmed as a case of typhoid fever; Oregon, 1 possible case.",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"ENTERED BY: Gabrielle MacKinnon on June 30, 2021",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

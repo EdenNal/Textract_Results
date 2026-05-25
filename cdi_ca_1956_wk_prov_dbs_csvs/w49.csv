@@ -1,0 +1,52 @@
+DOMINION BUREAU OF STATISTICS,Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Unnamed: 8,Unnamed: 9,Unnamed: 10,Unnamed: 11,Unnamed: 12,Unnamed: 13,Unnamed: 14,Unnamed: 15,Unnamed: 16,Unnamed: 17,Unnamed: 18,Unnamed: 19,Unnamed: 20,Unnamed: 21,Unnamed: 22,Unnamed: 23,Unnamed: 24,Unnamed: 25,Unnamed: 26,Unnamed: 27,Unnamed: 28,Unnamed: 29,Unnamed: 30,Unnamed: 31,Unnamed: 32,Unnamed: 33,Unnamed: 34,Unnamed: 35,Unnamed: 36,Unnamed: 37,Unnamed: 38
+HEALTH AND WELFARE DIVISION,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Summary of Cases of Notifiable Diseases in Canada, as reported by the Provincial Health Departments",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"for the week ended December 8, 1956, in comparison with the previous week 1, and the 5 year (1951-55) Median",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+No.,DISEASE,CANADA 2,,,,,,NFLD.,,,P.E.I.,,,N.S,,,N.B.,,,QUE.,,,ONT.,,,MAN.,,,SASK.,,,ALTA.,,,B.C.,,,No. 
+,,Report Week,Previous Week,Median 1951-55,Cumulative Total 3,,,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,Report Week,Previous Week,Median 1951-55,
+,,,,,1956,1955,Median 1951-55,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1,Chickenpox,863,994,1185,33576,31055,42094,-,-,1,3,1,2,91,66,37,..,..,..,211,271,322,315,424,524,49,57,51,..,..,25,..,..,14,194,175,131,1
+2,Diphtheria,7,7,5,132,118,161,-,-,-,-,-,-,-,-,-,-,1,-,3,-,3,-,-,1,4,6,-,-,-,-,-,-,-,-,-,-,2
+3,Dysentery: 4,5,10,12,609,660,660,-,-,-,-,-,-,-,-,-,..,1,..,..,..,6,-,-,2,-,-,2,3,-,2,2,-,-,-,9,2,3
+4,(a) Amoebic,-,-,-,2,3,18,-,-,-,-,-,-,-,-,-,..,..,..,..,..,..,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,4
+5,(b) Bacillary,5,10,12,606,657,657,-,-,-,-,-,-,-,-,-,..,1,..,..,..,6,-,-,2,-,-,2,3,-,2,2,-,-,-,9,2,5
+6,"Encephalitis, infectious",-,-,-,45,32,41,-,-,-,..,..,..,-,-,-,-,-,-,..,..,..,..,..,..,-,-,-,-,-,-,-,-,-,-,-,-,6
+7,"Influenza, epidemic",80,259,68,10717,38081,9954,..,..,..,50,54,-,29,203,52,..,..,..,-,-,-,-,-,3,1,2,3,-,-,-,..,..,..,-,-,3,7
+8,Measles,1251,1287,1227,49927,53327,53327,-,-,17,..,..,3,45,17,85,..,..,3,383,358,197,378,493,258,31,46,25,..,..,7,97,68,46,317,305,136,8
+9,"Meningitis, meningococcal",2,5,6,271,285,280,-,-,-,-,-,-,1,-,-,-,-,-,-,-,2,1,1,1,-,1,1,-,1,-,..,..,..,-,2,1,9
+10,Mumps,585,543,690,25932,25583,33237,-,-,-,..,2,2,14,63,22,..,..,1,72,70,174,132,171,283,40,36,29,..,..,17,..,..,5,327,201,103,10
+11,"Poliomyelitis, epidemic: 4",-,14,27,579,100,2527,-,-,-,-,-,-,-,-,-,-,-,-,-,9,2,-,1,-,-,1,2,-,-,2,-,2,6,-,1,5,11
+12,(a) With paralysis,-,9,9,331,536,1132,-,-,-,-,-,-,-,-,-,-,-,-,-,7,1,-,-,-,-,-,1,-,-,1,-,1,-,-,1,2,12
+13,(b) Without paralysis,-,3,14,201,373,1292,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,1,-,-,1,1,-,-,-,-,1,-,-,-,3,13
+14,Rubella,251,294,81,51380,19217,9888,-,-,1,..,..,..,4,3,-,..,..,..,74,113,8,16,33,30,-,-,-,..,..,3,80,33,21,77,112,8,14
+15,"Scarlet fever, etc. 5 **",183,205,414,11089,8766,13007,4,2,3,24,22,12,35,68,15,1,-,1,40,27,137,33,38,70,7,9,17,5,1,18,16,28,26,18,10,90,15
+16,Smallpox,-,-,-,-,-,-,-,-,-,..,..,..,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,16
+17,"Tuberculosis: 4,6",185,276,185,8684,9643,9936,7,15,9,-,2,1,-,-,1,11,14,8,64,137,51,25,16,33,29,16,9,4,3,8,22,29,23,23,44,44,17
+18,(a) Pulmonary,153,251,152,7124,7649,8070,7,15,9,-,1,-,-,-,1,10,13,8,61,136,49,(6),(6),(6),29,15,9,3,2,7,21,29,22,22,40,41,18
+19,(b) Non-pulmonary,7,9,9,489,565,513,-,-,-,-,1,-,-,-,-,1,1,-,3,1,2,(6),(6),(6),-,1,-,1,1,1,1,-,1,1,4,3,19
+20,Typhoid and paratyphoid,5,7,4,433,363,451,-,-,-,-,-,-,-,-,-,-,-,-,5,5,3,-,2,-,-,-,-,-,-,-,-,-,-,-,-,1,20
+21,Undulant fever,2,2,2,134,117,124,-,-,-,-,-,-,-,-,-,-,-,-,2,2,1,-,-,-,-,-,-,-,-,-,..,..,..,-,-,-,21
+22,Venereal diseases:,284,346,350,15911,15839,17229,10,6,7,-,3,1,12,17,8,2,3,8,68,82,93,(8),47,65,30,38,22,35,20,35,60,54,51,67,76,77,22
+23,"(a) Syphilis, primary",2,4,5,108,120,194,-,-,-,-,-,-,-,-,-,-,-,-,-,1,-,-,-,-,-,-,1,2,1,-,-,1,-,-,1,1,23
+24,(b) '' secondary,1,2,2,53,47,104,-,-,-,-,-,-,-,-,-,-,-,-,-,1,-,-,-,-,-,-,-,-,1,-,1,-,-,-,-,-,24
+25,(c) '' other,34,43,58,1835,2145,2460,-,-,1,-,-,-,2,1,1,-,-,4,22,18,17,-,12,14,3,3,1,2,1,4,3,1,1,2,7,4,25
+26,(d) Gonorrhoea,247,296,302,13904,13506,13506,10,6,6,-,3,-,10,16,6,2,3,4,46,61,68,-,35,50,27,35,20,31,17,28,56,52,49,65,68,69,26
+27,(e) Other venereal diseases 8,-,1,-,11,21,21,-,-,-,-,-,-,-,-,-,-,-,-,-,1,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,27
+28,Whooping cough,175,196,217,8232,13139,8865,-,2,-,1,5,8,1,-,13,1,-,1,122,99,61,19,42,42,6,14,6,5,-,13,16,21,9,4,13,10,28
+"(1) Figures adjusted for delayed reports. (2) Exclusive of Yukon and Northwest Territories. (3) Total accumulated to the end of the current week from the first week ending in January of the year stated. (4) Includes cases where type was not specified. (5) Scarlet fever includes cases of streptococcal sore throat. (6) Type not specified. (7) Includes chancroid, granuloma inguinale and lymphogranuloma venereum.   .. Not reportable",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"THE SITUATION IN THE UNITED STATES (Source: ""MORBIDITY AND MORTALITY-WEEKLY REPORT"", U.S. National Office of Vital Statistics): Number of reported cases for the current week (previous week in parentheses):",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Diphtheria,55 (67),Measles,3813 (3634),"Meningitis, other",25 (43),"Poliomyelitis, with paralysis",82 (90),Smallpox,- (-),Undulant fever,24 (14),,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Encephalitis, infectious",41 (32),Meningococcal infections,51 (41),"Poliomyelitis, acute",152 (169),"Poliomyelitis, without paralysis",40 (48),Typhoid fever,21 (22),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"The number of reported cases of poliomyelitis by type, in the United States for the current week, disease year, and calendar year are:",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Type,Current week,,Disease year ,,Calendar year,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,1956,1955,1956,1955,1956,1955,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Total,152,229,14061,27753,15128,28816,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Paralytic,82,119,5982,9941,6565,10405,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Nonparalytic,40,60,5520,10691,5805,10981,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Unspecified,30,50,2559,7121,2758,7430,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Of the 55 cases of diphtheria reported this week, 34 were in Michigan.
+EPIDEMIC REPORTS: Scarlet fever - Nfld. Reports mild epidemic at Jamestown, BB.",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"ENTERED BY: Gabrielle MacKinnon on June 30, 2021",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

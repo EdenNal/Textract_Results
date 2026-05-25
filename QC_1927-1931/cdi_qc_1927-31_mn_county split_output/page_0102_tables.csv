@@ -1,0 +1,54 @@
+﻿Table: Table_1
+Population urbaine,"1,439,900"
+Population rurale,"1,485,715"
+La Province,"2,925,615"
+Table: Table_2
+Urban population,"1,439,900"
+Rural population,"1,485,715"
+Whole Province,"2,925,615"
+Table: Table_3
+,Numéros,,PROVINCE,Parties,urbaines,Parties,rurales
+Noms des maladies,liste interna- tionale,Total des cas,Taux par "100,000" de population,Total des cas,Taux par "100,000" de population,Total des cas,Taux par "100,000" de population
+Fièvres typhoïde et para-t,1-2,"1,641",56.1,607,42.2,"1,034",69.6
+Fièvre ondulante,5,19,0.6,13,0.9,6,0.4
+Variole,6,1,0.03,1,0.06,-,0.0
+Rougeole,7,"7,658",261.8,"5,112",355.0,"2,546",171.4
+Scarlatine,8,"3,487",119.2,"2,535",176.1,952,64.1
+Coqueluche,9,"3,426",117.1,"2,586",179.6,840,56.6
+Diphtérie,10,"1,454",49.7,"1,042",72.4,412,27.7
+Grippe,11,509,17.4,166,11.6,343,23.1
+Erysipèle,15,300,10.3,263,18.3,37,2.5
+Poliomyélite,16,785,26.8,370,25.7,415,27.9
+Encéphalite léthargique,17,4,0.1,1,0.06,3,0.2
+Méningite cérébro-spinale,18,33,1.1,24,1.7,9,0.6
+Tétanos,22,1,0.03,1,0.06,,0.0
+Tuberculose pulmonaire,23,"3,129",107.0,"2,424",168.3,705,47.5
+Tuberculose, autres formes,24-32,66,2.3,27,1.9,39,2.6
+Ophtalmie pur. nouveaux-nés,35,29,1.0,26,1.8,3,0.2
+Varicelle,44a,"3,298",112.7,"2,520",175.0,778,52.4
+Rubéole,44b,377,12.9,159,11.0,218,14.7
+Autres maladies infectieuses,44c,"2,256",77.1,"2,104",146.1,152,10.2
+Septicémie puerpérale,145a,39,1.3,38,2.6,1,0.07
+Table: Table_4
+,Interna-,,PROVINCE,Urban,parts,Rural,parts
+Names of diseases,tional List Numbers,Total cases,Rate per "100,000" population,Total cases,Rate per "100,000" population,Total cases,Rate per "100,000" population
+Typhoid and paratyp. fevers.,1-2,"1,641",56.1 0.6,607 13,42.2 0.9,"1,034" 6,69.6 0.4
+Undulant fever,5,19,0.03,1,0.06,,0.0
+Smallpox,6,1,261.8,"5,112",355.0,"2,546",171.4
+Measles,7,"7,658",119.2,"2,535",176.1,952,64.1
+Scarlet fever,8,"3,487",,"2,586",179.6,840,56.6
+Whooping-cough,9,"3,426",117.1 49.7,"1,042",72.4,412,27.7
+Diphtheria,10,"1,454",17.4,166,11.6,343,23.1
+Influenza,11,509,10.3,263,18.3,37,2.5
+Erysipelas,15,300,26.8,370,25.7,415,27.9
+Poliomyelitis,16,785,,1,0.06,3,0.2
+Lethargic encephalitis,17,4,0.1,24,1.7,9,0.6
+Cerebro-spinal Meningitis,18,33,1.1 0.03,1,0.06,-,0.0
+Tetanus,22,1,,"2,424",168.3,705,47.5
+Pulmonary Tuberculosis,23,"3,129",107.0,27,1.9,39,2.6
+Tuberculosis, other forms,24-32,66,2.3,26,1.8,3,0.2
+Pur. Ophthalmia Neonatorum.,35,29,1.0,"2,520",175.0,778,52.4
+Chickenpox,44a,"3,298",112.7,159,11.0,218,14.7
+German Measles,44b,377,12.9,"2,104",146.1,152,10.2
+Other infectious diseases,44c,"2,256",77.1 1.3,38,2.6,1,0.07
+Puerperal Septicaemia,145a,39,,,,,

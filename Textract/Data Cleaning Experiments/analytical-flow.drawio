@@ -1,0 +1,91 @@
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="yudzixJaBegAu7hL_YSd">
+        <mxGraphModel dx="1154" dy="552" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="XKsLvKlqsqOqSlqPmJta-1" target="XKsLvKlqsqOqSlqPmJta-4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="XKsLvKlqsqOqSlqPmJta-1" target="XKsLvKlqsqOqSlqPmJta-8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-1" value="PDF File" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry y="210" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="XKsLvKlqsqOqSlqPmJta-4" target="XKsLvKlqsqOqSlqPmJta-5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-4" value="Textract" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="100" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="XKsLvKlqsqOqSlqPmJta-5" target="XKsLvKlqsqOqSlqPmJta-12" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-5" value="CSV File" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="110" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="XKsLvKlqsqOqSlqPmJta-7" target="XKsLvKlqsqOqSlqPmJta-14" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-7" value="CSV File" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="310" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="XKsLvKlqsqOqSlqPmJta-8" target="XKsLvKlqsqOqSlqPmJta-7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-8" value="Manual Data Entry" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="300" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="XKsLvKlqsqOqSlqPmJta-12" target="XKsLvKlqsqOqSlqPmJta-16" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-12" value="Cleaning" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="100" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="XKsLvKlqsqOqSlqPmJta-14" target="XKsLvKlqsqOqSlqPmJta-17" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-14" value="Cleaning" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="300" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="XKsLvKlqsqOqSlqPmJta-16" target="XKsLvKlqsqOqSlqPmJta-20" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-16" value="CSV File" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="110" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-17" value="CSV File" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="310" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="XKsLvKlqsqOqSlqPmJta-20" target="XKsLvKlqsqOqSlqPmJta-17" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="XKsLvKlqsqOqSlqPmJta-20" target="XKsLvKlqsqOqSlqPmJta-23" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-20" value="Compare" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="200" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="XKsLvKlqsqOqSlqPmJta-23" value="CSV File" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="210" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="CSV" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="620" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="In-Memory Data Frame" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="620" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="CSV" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="620" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

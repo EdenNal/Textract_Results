@@ -1,0 +1,80 @@
+1. Extract the table data from this image into CSV format. The image contains a vertically aligned table split into two groups: "N.F.I.D." (left) and "P.F.I." (right). each group contains 3 numeric columns (~12–13% width each), labeled by week and median values across two rows. Infer column headers from context. Parse the table row by row, even if there is slight skew or alignment issues. Leave cells empty if values are missing.
+2. Extract the numerical data from this table image. The table consists of two vertical sections: one labeled "N.F.I.D." and one labeled "P.F.I." Each section contains four columns with a two-row header:
+    
+    The second row specifies: "Report Week", "Previous Week", "Median 2015–19", and a blank or possibly another descriptor.
+    Each section reports disease statistics vertically, beginning with "Disease" as the first column, followed by three numeric columns for the time periods. Maintain the vertical alignment per disease. Use CSV format with columns: Disease, N.F.I.D. Report Week, N.F.I.D. Previous Week, N.F.I.D. Median 2015–19, P.F.I. Report Week, P.F.I. Previous Week, P.F.I. Median 2015–19. Include blank cells as empty strings.
+3. Extract numerical data from this possibly rotated table image. There are two main data sections: "N.F.I.D." and "P.F.I.", each with three subcolumns (Report Week, Previous Week, Median 2015–19).  Each group of three columns is about 40% width of the image. Ensure accurate row alignment for each disease and fill missing data as empty cells in CSV.
+4. Extract this tabular image data row by row. For each disease (leftmost column), pull the associated values under "N.F.I.D." and "P.F.I.", each of which includes "Report Week", "Previous Week", and "Median 2015–19" columns. Despite column merging in the header, ensure each disease row includes exactly 7 values: the disease name and six numbers. Format the output as CSV.
+5. This image represents a standardized table format where diseases are listed in the first column, and two data sections ("N.F.I.D." and "P.F.I.") each contain three subcolumns: "Report Week", "Previous Week", and "Median 2015–19". The table is aligned top-to-bottom, with possible noise or blur in cell borders. Extract the data while preserving this structure. If a cell is unreadable, insert an empty cell in the CSV. Maintain disease name row alignment carefully.
+Prepare a CSV-formatted output from this medical report table image. The image contains seven total columns:
+
+Disease
+
+N.F.I.D. Report Week
+
+N.F.I.D. Previous Week
+
+N.F.I.D. Median 2015–19
+
+P.F.I. Report Week
+
+P.F.I. Previous Week
+
+P.F.I. Median 2015–19
+Extract text accurately from all cells using OCR, and output a clean table. If column headers are partially obscured, infer them based on position. Normalize spacing and leave cells empty where values are absent.
+6. Convert this table image into CSV. Note that while the table generally follows a 7-column format, the spacing between columns may vary from table to table. The disease column is about 30% of the image width; each of the 6 numeric columns (under N.F.I.D. and P.F.I.) is approximately 10%. Expect variation in column widths and possible rotation. Align data to the inferred column structure and ensure correct mapping even with small OCR shifts.
+
+7. Extract structured data from this dense image table. The table has a 2-row header with implied merged top cells labeled "N.F.I.D." and "P.F.I." and subheaders: "Report Week", "Previous Week", "Median 2015–19". The left column lists diseases. Some cells may be missing values or appear as blank spaces. Treat each horizontal line as a row and ensure data falls under the correct columns. Output as CSV with seven columns: Disease, NFID_Week, NFID_Prev, NFID_Median, PFI_Week, PFI_Prev, PFI_Median.
+
+8.Extract structured data from this medical surveillance table image using a spatially anchored grid approach. The image consists of one table split into two symmetrical data blocks under the labels "N.F.I.D." (left half) and "P.F.I." (right half).
+Each of these two blocks contains three vertically stacked numeric columns with headers:
+Row 1 (merged cell across the three columns): the section title ("N.F.I.D." or "P.F.I.")
+Row 2: the subheaders "Report Week", "Previous Week", and "Median 2015–19"
+The far-left column (approx. 28–30% of the image width) contains the disease name per row and is visually separated by a dashed or faint vertical line.
+Each subsequent column under the two main sections occupies approximately 11–13% of the image width, evenly spaced. There are no horizontal lines, but each disease row is aligned by consistent vertical spacing.
+You must:
+Align each numeric value precisely with the corresponding disease and subheader.
+Treat missing values as blank cells.
+Output a CSV with this header:
+Disease, NFID_ReportWeek, NFID_PreviousWeek, NFID_Median2015_2019, PFI_ReportWeek, PFI_PreviousWeek, PFI_Median2015_2019
+Preserve row order as per the image top-to-bottom
+9. Convert the tabular image to a CSV table while handling OCR limitations proactively. The table includes a primary column for disease names on the far left, followed by two 3-column data blocks labeled "N.F.I.D." and "P.F.I." respectively.
+Each block contains the sub-columns:
+Report Week
+Previous Week
+Median 2015–19
+
+Visually:
+The first (leftmost) column is wider than the others (~30% of image width).
+Each numeric column spans 10–12% of the width.
+Some numbers may be faded, slightly distorted, or partially occluded due to compression artifacts.
+Values are arranged in rows, with slight variability in vertical spacing.
+
+Instruction:
+Use OCR to extract all legible content.
+If a value is illegible or clearly a non-numeric artifact, insert a blank cell ("") and do not attempt to infer values.
+Ensure each disease has a complete row of 7 fields, starting with the disease name and ending with the third P.F.I. column.
+Standardize "Median 2015–19" values to plain numbers (e.g., "20" not "20.0" unless decimals are visible).
+Return the result as a clean, comma-separated table with headers and one row per disease.
+
+10. Extract tabular data from this epidemiological report image. The image shows a standardized vertical format where diseases are listed in the far-left column, and their corresponding statistics are grouped under two main headers:
+N.F.I.D. (left group)
+P.F.I. (right group)
+Both groups use the same sub-column structure:
+Report Week
+Previous Week
+Median 2015–2019
+The complete table consists of 7 conceptual columns:
+Disease (text)
+NFID_ReportWeek (integer or blank)
+NFID_PreviousWeek (integer or blank)
+NFID_Median (integer or blank)
+PFI_ReportWeek (integer or blank)
+PFI_PreviousWeek (integer or blank)
+PFI_Median (integer or blank)
+Extraction rules:
+If rows appear misaligned or irregularly spaced, use horizontal patterns in number placement to deduce alignment.
+Do not infer data from context; if a cell appears blank or corrupted, leave it empty.
+Disease names may occasionally span slightly more vertical space than numeric cells; treat each non-numeric label as the anchor for a new row.
+Some diseases have large value disparities (e.g., "85" beside "1"); preserve all values exactly as displayed.
+Output as a UTF-8 encoded CSV string, comma-delimited, including header row.

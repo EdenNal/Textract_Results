@@ -1,0 +1,52 @@
+NFLD.       P.E.I.       N.S.         N.B.         QUE.         ONT.        MAN.        SASK.
+Report      Report       Report       Report       Report       Report      Report      Report
+Week        Week         Week         Week         Week         Week        Week        Week
+Vector      Vector       Vector       Vector       Vector       Vector      Vector      Vector
+borne       borne        borne        borne        borne        borne       borne       borne
+disease     disease      disease      disease      disease      disease     disease     disease
+
+.           .            .            .            436          329         221         539
+5           .            6            .            2            1           .           .
+.           .            .            .            1            2           .           .
+
+.           .            .            .            .            .           .           .
+.           .            .            .            .            .           .           2
+
+.           .            .            .            .            .           .           .
+.           .            .            .            .            .           .           .
+
+.           .            .            .            386          335         985         954
+10          49           10           .            1            2           1           1
+.           .            .            .            .            .           .           .
+
+.           14           15           1            11           .           29          5
+
+.           .            .            .            283          136         164         520
+2           1            .            2            .            .           2           3
+
+.           .            .            .            .            .           .           .
+832         851          20           20           230          300         139         140
+.           .            .            .            84           169         146         69
+
+.           .            .            .            .            .           .           .
+.           .            .            .            .            .           .           .
+
+.           .            .            .            .            .           .           .
+.           .            .            .            .            .           .           .
+
+.           .            .            .            74           105         88          93
+
+.           .            .            .            .            .           .           .
+
+.           .            .            .            77           88          54          58
+.           .            .            .            .            .           .           .
+
+.           .            .            .            .            .           .           .
+
+.           .            .            .            .            .           .           .
+
+.           .            .            .            .            .           .           .
+
+30          15           .            43           .            .           .           68
+.           .            .            .            .            .           .           .
+.           .            .            .            .            .           .           .

@@ -1,0 +1,22 @@
+Notes and summary for the following: https://platform.openai.com/docs/guides/images-vision?api-mode=chat
+
+Two ways to create or modify images
+
+GPT-Image-1: A natively multimodal LLM that “knows” the world and can generate more context-aware, realistic images without references.
+
+DALL·E 2/3: Specialized image-only models; great at literal rendering but lack GPT-Image’s built-in world understanding.
+
+Image-based prompts
+- You can pass image URLs in your chat requests.
+- You can include multiple images, but each one counts toward your token usage.
+Controlling processing detail
+- Use "detail": "low" for a fast, low-resolution (512×512) scan (85 token budget).
+- Use "detail": "high" (or omit for “auto”) if you need finer analysis.
+Supported inputs
+- File types: PNG, JPEG, WEBP, non-animated GIF.
+- Max size: 50 MB.
+- No watermarks, logos, overlaid text, NSFW content, or unreadable images.
+Known limitations
+- Poor at interpreting medical scans or non-Latin scripts.
+- Struggles with small/rotated text, complex graphs, precise spatial tasks (e.g. chessboards), panoramic/fisheye distortions, exact counts, and CAPTCHAs.
+- Metadata (filenames) is ignored; images are resized before analysis.

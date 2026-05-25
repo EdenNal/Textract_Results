@@ -1,0 +1,11 @@
+I'm summarizing the content from this source: https://platform.openai.com/docs/guides/text?api-mode=chat#prompt-engineering
+Shows you how to ask a language model (like ChatGPT) to write things for you. Under the hood, the model returns an array of “choices,” each containing the text it generated.
+- A big question is which version of the model to use. Some models spend extra time thinking through complicated, step-by-step tasks but are slower and cost a bit more. Other models work quickly and cheaply but need very clear instructions. Models also come in different sizes: the biggest ones are best at understanding complex requests, while the “mini” or “nano” versions are faster and less expensive if you just need something simple. 
+In most cases, the guide suggests using a GPT-4.1 model because it offers a good balance of speed, cost, and intelligence.
+- To keep things stable over time—especially when the model’s underlying software gets updates—you can lock your application to a specific model snapshot 
+(for example, “gpt-4.1-2025-04-14”). You also set up small tests (called “evals”) that check if your prompt still works the way you expect whenever you make changes.
+- helpful tips:
+  - Putting headings or bullet points (using Markdown) helps the model see different sections of your prompt.
+  - wrap chunks of text in XML tags to keep them separated.
+  -  paste in any extra background documents or data at the end.
+- there are many specific APIs we can explore!

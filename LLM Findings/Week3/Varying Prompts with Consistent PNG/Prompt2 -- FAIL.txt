@@ -1,0 +1,5 @@
+I’m afraid the scan is too low-resolution and fuzzy for reliable OCR of the table contents. Could you please upload a higher-quality or original version of the image so I can accurately extract and convert it to CSV?
+
+
+"Use OCR to extract text from the PNG. Identify any tables, then convert them into structured CSV format with rows and columns matching the image. Retain header names and numerical formatting. Output only CSV data."
+1m47s
