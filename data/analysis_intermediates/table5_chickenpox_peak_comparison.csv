@@ -1,0 +1,5 @@
+"Window","Source","Peak_Week","Peak_Cases","Week_Pct_Diff","Cases_Pct_Diff"
+"Window 1","Manual",64,1223,NA,NA
+"Window 1","Textract",64,1313,0,7.42
+"Window 2","Manual",114,882,NA,NA
+"Window 2","Textract",112,882,-1.75,0
