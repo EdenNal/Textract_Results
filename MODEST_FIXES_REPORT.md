@@ -38,7 +38,7 @@ At the start of this session, `git status` showed a deleted `26.1.1`, a modified
 - **README.md draft edits**: extensive, detailed, and largely accurate against the data I independently recomputed (the 92.95%/28,255 and 61,116/7,244 numbers the ticket itself quoted as "already known" checked out exactly against `Levels_of_Accuracy.csv` and the cleaned Textract CSVs). I built on it rather than replacing it, adding a "part 3" section documenting this pass's changes and updating the Section 5.1.1 percentage table for the new M1 denominator.
 - **`agreement.py`**: syntactically valid, referenced from the README as an unwired Wilson-CI script; committed as-is (not integrated into the numbered pipeline, per the README's own caveat).
 
-## Needs Eden
+## Needs david or steve 
 
 - **Raw Textract API JSON responses**, the AWS region/account/feature configuration, exact extraction date(s), and installed package versions at extraction time are not present anywhere in this repository -- only processed CSV outputs are checked in. Cannot be reconstructed without re-running Textract, which is out of scope. Flagged in the Data Availability statement and README part-3 section.
 - **Archived DOI (Zenodo etc.)**: no git tags or releases exist in this repository, so there is no release to mint/cite a DOI against. Left as a documented gap rather than fabricated.
