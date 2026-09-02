@@ -425,18 +425,8 @@ For our purposes, it is critical to examine the difference between the cross-cor
 
 \begin{figure}[h!]
     \centering
-    
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figure/Cross-correlationMCmanual.png}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figure/Cross-correlationMCtextract.png}
-    \end{subfigure}
-    
-    \caption{Comparison of manual versus Textract disease cross-correlation for Chickenpox and Measles. This is described in \cref{sec:measuresAccuracy}. Data version: processed Textract data (\cref{tab:pipeline}, Stage 2), without manual correction.}
+    \includegraphics[width=\linewidth]{../figures/fig11_measles_chickenpox_ccf.png}
+    \caption{Comparison of manual versus Textract disease cross-correlation for Chickenpox and Measles. This is described in \cref{sec:measuresAccuracy}. Data version: processed Textract data (\cref{tab:pipeline}, Stage 2), without manual correction. Regenerated from the corrected common-calendar-week CCF calculation (\texttt{analysis/cross\_correlation.R}); see \cref{tab:ccf_summary}.}
     \label{fig:comparisonCrossCorrelation}
 \end{figure}
 
@@ -479,18 +469,8 @@ The cross-correlation between Measles and Meningitis is weak across all lags in 
 
 \begin{figure}[h!]
     \centering
-    
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figure/CCFmanualMM.png}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figure/CCFtextractMM-hardcode.png}
-    \end{subfigure}
-    
-    \caption{Comparison of manual versus Textract disease cross-correlation for Measles and Meningitis. Data version: manually corrected (outlier removal, \cref{sec:hardcoding}).}
+    \includegraphics[width=\linewidth]{../figures/fig14_measles_meningitis_ccf.png}
+    \caption{Comparison of manual versus Textract disease cross-correlation for Measles and Meningitis. Data version: manually corrected (outlier removal, \cref{sec:hardcoding}). Regenerated from the corrected common-calendar-week CCF calculation (\texttt{analysis/cross\_correlation.R}); see \cref{tab:ccf_summary}.}
     \label{fig:comparisonCrossCorrelation2}
 \end{figure}
 
@@ -518,18 +498,8 @@ We see in \cref{fig:comparisonCrossCorrelation3} that the graphs of the cross-co
 
 \begin{figure}[h!]
     \centering
-    
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figure/manualchickenpoxmumpsccf.png}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figure/textractchickenpoxmumpsccf.png}
-    \end{subfigure}
-    
-    \caption{Comparison of manual versus Textract disease cross-correlation for Chickenpox and Mumps. Data version: manually corrected (\cref{sec:hardcoding}).}
+    \includegraphics[width=\linewidth]{../figures/fig16_chickenpox_mumps_ccf.png}
+    \caption{Comparison of manual versus Textract disease cross-correlation for Chickenpox and Mumps. Data version: manually corrected (\cref{sec:hardcoding}). Regenerated from the corrected common-calendar-week CCF calculation (\texttt{analysis/cross\_correlation.R}); see \cref{tab:ccf_summary}.}
     \label{fig:comparisonCrossCorrelation3}
 \end{figure}
 
