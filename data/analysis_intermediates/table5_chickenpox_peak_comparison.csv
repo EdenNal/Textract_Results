@@ -1,5 +1,5 @@
-"Window","Source","Peak_Week","Peak_Cases","Week_Pct_Diff","Cases_Pct_Diff"
-"Window 1","Manual",64,1223,NA,NA
-"Window 1","Textract",64,1313,0,7.42
-"Window 2","Manual",114,882,NA,NA
-"Window 2","Textract",112,882,-1.75,0
+"Window","Fit_Range","N_Obs","Source","Peak_Week","Peak_Cases","Delta_Peak_Week","Delta_Peak_Cases","Delta_Peak_Cases_Pct","r_per_week","r_CI_Lo","r_CI_Hi","Doubling_Time","Doubling_Time_CI_Lo","Doubling_Time_CI_Hi","Converged"
+"Window 1","35-64",30,"Manual",64,1223,NA,NA,NA,0.144,0.125,0.167,4.8,4.2,5.5,TRUE
+"Window 1","35-64",30,"Textract",64,1313,0,90,7.42,0.144,0.108,0.193,4.8,3.6,6.4,TRUE
+"Window 2","95-126",32,"Manual",114,882,NA,NA,NA,0.144,0.125,0.167,4.8,4.2,5.5,TRUE
+"Window 2","95-126",32,"Textract",112,882,-2,0,0,0.144,0.108,0.193,4.8,3.6,6.4,TRUE
