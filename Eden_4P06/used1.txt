@@ -1,0 +1,14 @@
+JaganRpkg
+cite{CANDID
+cite{JaganRpkg
+cite{Levenshtein1965BinaryCC
+cite{Ma2014
+cite{STADLER2024108386
+cite{Wagner1974
+cite{WallLips07
+cite{aws_textract
+cite{awsdocumentation
+cite{hu2002evaluating
+cite{stewart
+cite{wagner1974string
+cite{zhong2020image

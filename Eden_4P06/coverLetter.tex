@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{parskip}   % space between paragraphs, no indent
+
+\begin{document}
+
+%% ── Sender block ──────────────────────────────────────────────────────────────
+\noindent
+Eden Ofek Nalian \\
+Department of Mathematics \& Statistics \\
+McMaster University \\
+Hamilton, Ontario, Canada \\
+\href{mailto:eden.nalian@gmail.com}{eden.nalian@gmail.com}
+
+\bigskip
+\noindent \today
+
+\bigskip
+
+%% ── Recipient block ───────────────────────────────────────────────────────────
+\noindent
+Editorial Office \\
+\textit{PLOS Digital Health}
+
+\bigskip
+
+%% ── Salutation ────────────────────────────────────────────────────────────────
+\noindent Dear Editors,
+
+\bigskip
+
+%% ── Body ──────────────────────────────────────────────────────────────────────
+We are writing to submit our manuscript, \textbf{``Validation of automated
+table extraction for historical infectious-disease surveillance data,''} for consideration as a
+Research Article in \textit{PLOS Digital Health}.
+
+
+The majority of historical public health data remain locked in scanned paper
+documents, representing a major barrier to large-scale epidemiological research.
+Our manuscript addresses this barrier directly by rigorously evaluating
+Amazon Textract (a cloud-based machine-learning service for structured
+document extraction) as an  alternative to manual data entry for historical infectious disease tables.
+We apply the tool to the Canadian Disease Incidence Dataset (CANDID), an archive of weekly  disease counts spanning multiple Canadian provinces and territories from 1956 to 1958.
+This work sits squarely within \textit{PLOS Digital Health}'s scope: it uses
+a digital tool to advance the accessibility and usability of health data, and it provides a transparent, reproducible methodology evaluation with direct implications for public health research practice.
+
+After a straightforward post-processing pipeline, automated extraction
+achieved over 95\% cell-level agreement with manually entered data.
+The extraction errors that remained were either small in magnitude and statistically negligible, or large and visually obvious, making them easy to detect and correct.
+We further demonstrate that epidemiologically important statistics derived from the extracted data (including disease cross-correlations, epidemic peak times, peak case counts, and exponential growth rates) were nearly
+identical to those computed from the manually entered dataset. This establishes
+that automated table extraction can produce data of sufficient quality for
+substantive epidemiological analysis.
+We also identify conditions under which automation is most beneficial and
+outline a clear post-processing workflow that other research groups can adopt
+for their own historical archives.
+
+
+The bottleneck of manual data entry has long constrained historical
+epidemiology, forcing researchers to focus on small datasets or invest
+enormous person-hours before any analysis can begin.
+As archives of historical health records continue to be scanned worldwide,
+tools and protocols like Amazon Textract   will become increasingly important for realising the full scientific value of these
+collections. We believe this paper will be of broad interest to readers working in
+digital health informatics, public health surveillance, mathematical
+epidemiology, and data science.
+
+We confirm that this manuscript has not been published elsewhere and is
+not under consideration at any other journal.
+All authors have read and approved the final manuscript.
+There are no competing interests to declare, and the study received no
+external funding.
+
+We have not indicated a preferred Academic Editor, and we leave the
+assignment entirely to the editorial team's discretion.
+Suggested reviewers are listed in the submission form.
+
+We look forward to hearing from you.
+
+\bigskip
+
+\noindent Sincerely,
+
+\bigskip
+\bigskip
+
+\noindent Eden Ofek Nalian (corresponding author) \\
+Steven C.\ Walker and David J.\,D.\ Earn  
+
+\end{document}
