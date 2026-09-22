@@ -2,7 +2,6 @@
 % \usepackage{scrtime} 
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage{pdflscape}
 \usepackage{array}
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
@@ -508,23 +507,37 @@ The cross-correlation between diseases and the conclusions we draw from their CC
 
 \Cref{tab:ccf_summary} collects these summary statistics for all three disease pairs. A strong cross-correlation near lag zero is expected for two seasonal childhood infections circulating in the same population and is not, on its own, a demanding evaluation target; what these comparisons test is whether Textract preserves the \emph{structure} of that dependence (peak lag, and the overall shape of the CCF) rather than establishing a stringent benchmark of extraction accuracy.
 
-\begin{landscape}
 \begin{table}[h]
 \centering
-\scriptsize
-\begin{tabular}{lp{2.5cm}ccccccccc}
+\small
+\begin{tabular}{lp{3.3cm}ccc}
 \toprule
-Disease pair & Data version & Max $|\Delta|$ & Lag at max & RMS diff & Lag M & Lag T & $\Delta$Lag & $\rho$ M & $\rho$ T & $\Delta\rho$ \\
+Disease pair & Data version & Max $|\Delta|$ & Lag at max & RMS diff \\
 \midrule
-Measles vs Chickenpox & processed, no manual correction & 0.0699 & 7 & 0.0376 & 0 & 0 & 0 & 0.8584 & 0.8329 & $-0.0255$ \\
-Measles vs Meningitis & \textbf{manually corrected} & 0.0750 & 4 & 0.0401 & 3 & 2 & $-1$ & 0.0848 & 0.1366 & $0.0517$ \\
-Chickenpox vs Mumps & \textbf{manually corrected} & 0.0145 & 5 & 0.0080 & 0 & 0 & 0 & 0.8983 & 0.8974 & $-0.0009$ \\
+Measles vs Chickenpox & processed, no manual correction & 0.0699 & 7 & 0.0376 \\
+Measles vs Meningitis & \textbf{manually corrected} & 0.0750 & 4 & 0.0401 \\
+Chickenpox vs Mumps & \textbf{manually corrected} & 0.0145 & 5 & 0.0080 \\
 \bottomrule
 \end{tabular}
-\caption{Summary of cross-correlation agreement between manual and Textract series for all three disease pairs, computed by \texttt{analysis/ccf\_summary.py} from the per-lag CCF values (\hyperref[sec:supp]{Supplementary Material}, Tables S1--S3), which are themselves computed by \texttt{analysis/cross\_correlation.R} after merging the manual and Textract series on their shared week identifier and restricting to weeks with complete data in both sources at every lag (the two series are no longer NA-dropped independently, which previously let them cover different numbers of calendar weeks per disease pair). Lag range $k \in \{-12,\dots,+12\}$ (n = 25 lags). Sign convention: all differences are Textract $-$ Manual. ``M''/``T'' denote Manual/Textract; ``Lag M''/``Lag T'' and ``$\rho$ M''/``$\rho$ T'' are the peak lag and peak correlation for each series. Peak-lag ties (smaller $|k|$, then negative lag) did not occur for any of the three pairs. \textbf{Data version} follows \cref{tab:pipeline}: two of the three pairs (Meningitis, Mumps) use Textract series manually corrected following inspection (\cref{sec:hardcoding}); Measles vs.\ Chickenpox does not.}
+\caption{Summary of cross-correlation agreement between manual and Textract series for all three disease pairs (part 1 of 2; continued in \cref{tab:ccf_summary_b}), computed by \texttt{analysis/ccf\_summary.py} from the per-lag CCF values (\hyperref[sec:supp]{Supplementary Material}, Tables S1--S3), which are themselves computed by \texttt{analysis/cross\_correlation.R} after merging the manual and Textract series on their shared week identifier and restricting to weeks with complete data in both sources at every lag (the two series are no longer NA-dropped independently, which previously let them cover different numbers of calendar weeks per disease pair). Lag range $k \in \{-12,\dots,+12\}$ (n = 25 lags). Sign convention: all differences are Textract $-$ Manual. \textbf{Data version} follows \cref{tab:pipeline}: two of the three pairs (Meningitis, Mumps) use Textract series manually corrected following inspection (\cref{sec:hardcoding}); Measles vs.\ Chickenpox does not.}
 \label{tab:ccf_summary}
 \end{table}
-\end{landscape}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lcccccc}
+\toprule
+Disease pair & Lag M & Lag T & $\Delta$Lag & $\rho$ M & $\rho$ T & $\Delta\rho$ \\
+\midrule
+Measles vs Chickenpox & 0 & 0 & 0 & 0.8584 & 0.8329 & $-0.0255$ \\
+Measles vs Meningitis & 3 & 2 & $-1$ & 0.0848 & 0.1366 & $0.0517$ \\
+Chickenpox vs Mumps & 0 & 0 & 0 & 0.8983 & 0.8974 & $-0.0009$ \\
+\bottomrule
+\end{tabular}
+\caption*{\textbf{Table 3 (continued).} Peak lag and peak correlation for each series (part 2 of 2, continued from \cref{tab:ccf_summary}). ``M''/``T'' denote Manual/Textract; ``Lag M''/``Lag T'' and ``$\rho$ M''/``$\rho$ T'' are the peak lag and peak correlation for each series, and the $\Delta$ columns are Textract $-$ Manual. Peak-lag ties (smaller $|k|$, then negative lag) did not occur for any of the three pairs.}
+\label{tab:ccf_summary_b}
+\end{table}
 
 \clearpage
 
