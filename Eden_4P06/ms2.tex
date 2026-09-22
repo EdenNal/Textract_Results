@@ -1,6 +1,9 @@
 \documentclass[12pt]{article}
 % \usepackage{scrtime} 
-\usepackage{booktabs} 
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{pdflscape}
+\usepackage{array}
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \usepackage{graphicx}
@@ -68,11 +71,8 @@ Corresponding author: eden.nalian@gmail.com (Eden Ofek Nalian)
 
 
 \begin{abstract}
-The majority of historical epidemiological data remains undigitized. This paper evaluates the effectiveness of automated table extraction as an alternative to manual data entry. We assess the performance of \emph{Amazon Textract} on a large dataset of historical infectious disease records, comparing extraction accuracy, error characteristics, and overall efficiency against traditional manual transcription methods. Cell-level agreement was evaluated on the 1956 tables (53{,}872 evaluated cells), where content-only agreement between the automated and manually transcribed data was 88.5\% overall and 92.9\% among cells that were numeric in the manual reference transcription (a secondary figure of 95.6\% obtains if the denominator is instead restricted to cells numeric on both sides); downstream epidemiological comparisons (disease peaks, growth rates, and cross-correlations) span all three years of the dataset, 1956--1958. Our findings show that extraction errors were present in all extractions we performed; they tend to be either minor with negligible impact or discernible on inspection. Extraction runtime was short relative to an extrapolated manual-entry estimate, but total person-time, including post-processing, was not measured. As well, the measured post-processing time we did record was a small proportion of the total time previously required for the whole task. Overall, this paper illustrates the potential and limitations of a human-in-the-loop workflow for transforming historical tabular data of this kind into digital formats.
+The majority of historical epidemiological data remains undigitized. This paper evaluates the effectiveness of automated table extraction as an alternative to manual data entry. We assess the performance of \emph{Amazon Textract} on a large dataset of historical infectious disease records, comparing extraction accuracy, error characteristics, and overall efficiency against traditional manual transcription methods. Cell-level agreement was evaluated on the 1956 tables (53{,}872 evaluated cells), where content-only agreement between the automated and manually transcribed data was 88.5\% overall and 92.9\% among cells that were numeric in the manual reference transcription (a secondary figure of 95.6\% obtains if the denominator is instead restricted to cells numeric on both sides); downstream epidemiological comparisons (disease peaks, growth rates, and cross-correlations) span all three years of the dataset, 1956--1958. Most residual cell mismatches had a Levenshtein distance of one or two; larger discrepancies were concentrated in rows affected by disease-name or row-alignment failures, and differences in the selected downstream epidemiological summaries were generally modest. Extraction runtime was short relative to an extrapolated manual-entry estimate, but total person-time, including post-processing, was not measured. As well, the measured post-processing time we did record was a small proportion of the total time previously required for the whole task. Overall, this paper illustrates the potential and limitations of a human-in-the-loop workflow for transforming historical tabular data of this kind into digital formats.
 \end{abstract}
-
-\section*{Author Summary }
-Vast amounts of historical public health data exist only as hardcopy or scanned images, making them inaccessible for statistical analysis. We tested whether \emph{Amazon Textract}, a machine learning service built for structured document extraction, could bridge this gap using historical Canadian infectious disease records. After modest post-processing, the automated data closely matched records entered by hand: content-only agreement between the two sources was 88.5\% across all evaluated cells, rising to 92.9\% for cells holding a numeric case count in the manual reference (95.6\% if the denominator is instead restricted to cells numeric in both sources). Most errors that did occur differed from the reference value by only one or two characters and had negligible statistical impact; a small number of errors were large and occurred specifically in disease-name strings. Key downstream epidemiological statistics, including disease peak timing, initial growth rates, and cross-correlations between diseases, showed only small, quantified differences whether calculated from the automated or manually entered data. For researchers working with historical archives, this case study suggests that tools like Textract may reduce the extraction-time component of digitizing data, though total person-time including post-processing was not measured here. We hope this work supports careful benchmarking and auditing of current extraction tools on representative source material in historical epidemiology and public health research.
 
 \section{Introduction} \label{sec:intro}
 
@@ -98,7 +98,7 @@ In this section, we will summarize the process of extracting data from a scan of
 For supplementary material on running AWS Textract and the provided extraction script, see \cref{sec:supp}.
 
 \subsection{API Call to Textract}
-AWS Textract can be accessed programmatically via API calls with any popular high-level programming language; we use Python, via AWS's official SDK, \texttt{boto3}. A researcher calls Textract's \texttt{AnalyzeDocument} endpoint and receives a flat, nested JSON structure of nested \texttt{BLOCK} objects (tables, cells, and words, each with a confidence score) that must be reassembled into the row/column structure a human would recognize; the full object structure is given in \nameref{sec:supp} (S3). Once reassembled, this process can be applied to multiple tables at once by iterating through a repository of scanned table files and returning the outputs in separate CSV files.
+AWS Textract can be accessed programmatically via API calls with any popular high-level programming language; we use Python, via AWS's official SDK, \texttt{boto3}. A researcher calls Textract's \texttt{AnalyzeDocument} endpoint and receives a flat, nested JSON structure of nested \texttt{BLOCK} objects (tables, cells, and words, each with a confidence score) that must be reassembled into the row/column structure a human would recognize; the full object structure is given in \hyperref[sec:supp]{Supplementary Material} (S3). Once reassembled, this process can be applied to multiple tables at once by iterating through a repository of scanned table files and returning the outputs in separate CSV files.
 
 \subsection{Post-Processing}\label{sec:postprocessing}
 Though it is trivial for humans to detect the difference between cell values and headers, Textract relies on an OCR engine, so it does not differentiate between the two. Headers are not explicitly labelled, merged cells rely on \texttt{RowSpan/ColumnSpan}, and column meaning must be inferred by position. This is why post-processing is essential for meaningful analysis.
@@ -163,12 +163,12 @@ The most straightforward metric, which we call the \emph{exact matched-cell prop
 This percent equivalent metric was first applied to the raw extracted data, and then again
 as the data became progressively more processed through the methods described in \cref{sec:postprocessing}.
 
-\paragraph{Inclusion rule.} We define the evaluated cell set reproducibly, following the implementation in \texttt{postprocessing/combine.ipynb}: each cleaned weekly CSV pair (\texttt{data/textract\_cleaned/1956}, \texttt{data/manual\_cleaned/1956}) is compared position-by-position over the overlapping row and column range, i.e.\ \texttt{min(n\_rows)} by \texttt{min(n\_cols)} between the two files for that week; any rows or columns beyond that overlap (e.g.\ from a length mismatch between the two sources) fall outside this range and are not included in the denominator. Merged-cell handling, header/data-row labelling, footnote-marker treatment, and repeated row indices are resolved upstream during the cleaning stage (\cref{sec:postprocessing}) that produces the \texttt{*\_cleaned} inputs, not by the comparison script itself; the comparison operates on whatever string is present in each cleaned cell. Blank cells and ``\texttt{-}''/``\texttt{..}''/``\texttt{...}'' placeholders are retained and compared as literal strings. A cell counts as numeric (and is included in the numeric-only denominator in \cref{tab:pipeline}) if both the Textract and reference values consist only of digits with optional thousands separators; cells where either side is empty or a placeholder are excluded from the numeric-only comparison. The row-shift tolerance (\cref{tab:pipeline}, Stage 2) checks whether a Textract cell matches the reference either in its original column or in the adjacent column one position to the right.
+\paragraph{Inclusion rule.} We define the evaluated cell set reproducibly, following the implementation in \texttt{postprocessing/combine.ipynb}: each cleaned weekly CSV pair (\texttt{data/textract\_cleaned/1956}, \texttt{data/manual\_cleaned/1956}) is compared position-by-position over the overlapping row and column range, i.e.\ \texttt{min(n\_rows)} by \texttt{min(n\_cols)} between the two files for that week; any rows or columns beyond that overlap (e.g.\ from a length mismatch between the two sources) fall outside this range and are not included in the denominator. Merged-cell handling, header/data-row labelling, footnote-marker treatment, and repeated row indices are resolved upstream during the cleaning stage (\cref{sec:postprocessing}) that produces the \texttt{*\_cleaned} inputs, not by the comparison script itself; the comparison operates on whatever string is present in each cleaned cell. Blank cells and ``\texttt{-}''/``\texttt{..}''/``\texttt{...}'' placeholders are retained and compared as literal strings. A cell counts toward the primary numeric denominator in \cref{tab:pipeline} (n=28,255) if the reference (manual) value consists only of digits with optional thousands separators, regardless of what Textract produced for that cell. A cell counts toward the secondary, numeric-both-sources denominator (n=26,069) only if the Textract value is also numeric by the same rule; cells where either side is empty or a placeholder are excluded from both numeric denominators. The row-shift tolerance (\cref{tab:pipeline}, Stage 2) checks whether a Textract cell matches the reference either in its original column or in the adjacent column one position to the right.
 
 \paragraph{Cells excluded by the overlap restriction.} Because the comparison in \cref{tab:pipeline} scores only the overlapping row/column region of each weekly table pair (the inclusion rule above), it does not score every cell Textract produced. Across the 52 cleaned 1956 tables, the evaluated overlap totals 53{,}872 cells, while the full cleaned Textract bounding grids (\texttt{data/textract\_cleaned/1956}, summed row $\times$ column extent per file) total 61{,}116 cells -- so 7{,}244 Textract cells (11.9\% of the full grid) fall outside the evaluated overlap and are not scored by any of the agreement figures in this paper. These excluded cells are not automatically 7{,}244 additional errors: they can include border/padding rows introduced by the cleaning step, repeated header rows, or other structural artefacts of aligning two independently formatted tables, rather than substantive disease-count cells. We report this count for transparency but have not manually audited the 7{,}244 excluded cells to determine how many are non-trivial content versus padding; this is a scope limitation of the reported accuracy figures (see \cref{sec:limitations}).
 
 \subsubsection{String Differences and Levenshtein Distance} \label{sec:levdist}
-To quantify discrepancies between cells with extracted string and their manually entered counterparts, we compute string-level similarity metrics, with a primary focus on Levenshtein distance \cite{Levenshtein1965BinaryCC}. Levenshtein distance measures the minimum number of single-character edit operations -- insertions, deletions, or substitutions -- required to transform one string into another; a distance of zero indicates an exact match, while larger values reflect increasing divergence. The standard dynamic-programming recurrence for computing it is given in \nameref{sec:supp} (S4).
+To quantify discrepancies between cells with extracted string and their manually entered counterparts, we compute string-level similarity metrics, with a primary focus on Levenshtein distance \cite{Levenshtein1965BinaryCC}. Levenshtein distance measures the minimum number of single-character edit operations -- insertions, deletions, or substitutions -- required to transform one string into another; a distance of zero indicates an exact match, while larger values reflect increasing divergence. The standard dynamic-programming recurrence for computing it is given in \hyperref[sec:supp]{Supplementary Material} (S4).
 
 The dynamic-programming formulation above follows the general string-to-string correction framework of Wagner and Fischer \cite{wagner1974string}. In practice, Levenshtein distance is often normalized by string length to enable fair comparison across tokens of different sizes. This is particularly important when evaluating OCR output, where short strings (e.g., years or counts) are disproportionately sensitive to single-character errors.
 
@@ -257,16 +257,17 @@ The cell-agreement analysis in this section covers the 1956 CANDID tables only, 
 
 \begin{table}[h]
 \centering
-\begin{tabular}{clcccl}
+\footnotesize
+\begin{tabularx}{\textwidth}{c X >{\centering\arraybackslash}p{2.1cm} >{\centering\arraybackslash}p{2.1cm} >{\centering\arraybackslash}p{2.1cm} X}
 \toprule
-Stage & Operation & All cells (n=53{,}872) & Numeric, manual reference (n=28{,}255) & Numeric, both sources (n=26{,}069) & Rule provenance \\
+Stage & Operation & All cells (n=53{,}872) & Numeric, manual ref.\ (n=28{,}255) & Numeric, both sources (n=26{,}069) & Rule provenance \\
 \midrule
 0 & Raw Textract output (strict equality) & 74.0\% & 71.9\% & 77.9\% & --- \\
 1 & + Comma/whitespace normalization & 76.8\% & 77.3\% & 83.8\% & generic, a priori \\
 2 & + Row-shift tolerance (adjacent column) & 88.5\% & 92.9\% & 95.6\% & developed against reference data \\
-3 & Manual adjudication (Meningitis, Mumps) & not quantified & not quantified & not quantified & manual, post-hoc \\
+3 & Manual correction following inspection (Meningitis, Mumps) & not quantified & not quantified & not quantified & manual, post-hoc \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \caption{Pipeline stages applied to the raw Textract output for the 1956 CANDID tables, and the resulting cell-agreement percentage at each stage under three denominators, as computed by \texttt{postprocessing/combine.ipynb} and exported to \texttt{data/analysis\_intermediates/accuracy\_summary.csv}. Stage 2 reports content-only agreement (a match either in place or shifted one column over); it is not a strict content-and-position metric. The primary numeric-accuracy figure used elsewhere in this paper is the ``Numeric, manual reference'' column (n=28{,}255: every cell where the manual transcription holds a numeric value, regardless of what Textract read there), since it does not silently exclude cells where Textract failed to extract a number at all. The ``Numeric, both sources'' column (n=26{,}069) is reported as a secondary figure for comparability with denominators used elsewhere in the OCR-evaluation literature.}
 \label{tab:pipeline}
 \end{table}
@@ -314,7 +315,7 @@ There are outliers in the trend seen at Levenshtein distances of 8, 9, 11, 14, a
 
 For Levenshtein distances greater than 6, the errors we inspected occur in the disease-name column (column index 0) of the affected tables, where Textract extracted a word or word-fragment (e.g.\ ``\,meningococcal'', ``\,infectious'', ``\,epidemic'', ``\,primary'') into a cell the reference transcription records as a plain numeric value or placeholder. This pattern is consistent with row misalignment: a multi-word or multi-row disease-name label bleeding into the row Textract assigned to the adjacent numeric entry.
 
-Of course, Levenshtein distances of large magnitudes help us in the sense that, following a manual inspection of the extracted data, it would be clear to a human that an error has occurred. In addition, distances of this magnitude occurred exclusively in disease-name strings rather than in numeric values.
+Of course, Levenshtein distances of large magnitudes help us in the sense that, following a manual inspection of the extracted data, it would be clear to a human that an error has occurred. In addition, distances of this magnitude were concentrated in disease-name strings and row-alignment failures rather than in numeric values.
 
 We also looked at the relative Levenshtein distance, i.e., the Levenshtein distance proportional to the length of the reference string. This allows us to visualize the errors caused by Textract in a way that accounts for the length of the string
  (see \cref{fig:LdistNormal}). As longer strings have a higher potential Levenshtein distance, normalizing by their lengths aids in determining the proportion of mistakes.
@@ -430,11 +431,11 @@ For our purposes, it is critical to examine the difference between the cross-cor
     \label{fig:comparisonCrossCorrelation}
 \end{figure}
 
-To gain a sense of how similar the cross-correlations are, we computed a set of summary statistics across all lags (\cref{tab:ccf_summary}; per-lag values are in \nameref{sec:supp}, Table S1). We report absolute and root-mean-square differences rather than a relative difference at each lag, because a relative difference is uninformative wherever the manual correlation is itself near zero, as the next comparison illustrates.
+To gain a sense of how similar the cross-correlations are, we computed a set of summary statistics across all lags (\cref{tab:ccf_summary}; per-lag values are in \hyperref[sec:supp]{Supplementary Material}, Table S1). We report absolute and root-mean-square differences rather than a relative difference at each lag, because a relative difference is uninformative wherever the manual correlation is itself near zero, as the next comparison illustrates.
 
 Both datasets peak at lag 0 (\cref{tab:ccf_summary}), so the change in peak lag is 0 and the change in peak correlation is small ($-0.0255$). Across all 25 lags, the largest absolute discrepancy between the two series is $0.0699$ (at lag 7) and the root-mean-square difference is $0.0376$. In this disease-pair comparison, the lag with the highest cross-correlation was unchanged after processing. Because cross-correlation is a measure of time relationships rather than exact magnitudes, the estimated timing structure of this pairwise comparison was similar between the two sources.
 
-We repeat this process with the time series for Measles and Meningitis (incidence curves in \cref{fig:comparisonIncidentsMM}, cross-correlation in \cref{fig:comparisonCrossCorrelation2}), and compare the values using the same summary statistics (\cref{tab:ccf_summary}; per-lag values are in \nameref{sec:supp}, Table S2). Unlike the Measles/Chickenpox comparison above, the Meningitis series used here has been manually corrected: additional post-processing was applied to remove visible outliers, as described in \cref{sec:hardcoding}.
+We repeat this process with the time series for Measles and Meningitis (incidence curves in \cref{fig:comparisonIncidentsMM}, cross-correlation in \cref{fig:comparisonCrossCorrelation2}), and compare the values using the same summary statistics (\cref{tab:ccf_summary}; per-lag values are in \hyperref[sec:supp]{Supplementary Material}, Table S2). Unlike the Measles/Chickenpox comparison above, the Meningitis series used here has been manually corrected: additional post-processing was applied to remove visible outliers, as described in \cref{sec:hardcoding}.
 
 
 \begin{figure}[H]
@@ -454,7 +455,7 @@ We repeat this process with the time series for Measles and Meningitis (incidenc
     \label{fig:comparisonIncidentsMM}
 \end{figure}
 
-The cross-correlation between Measles and Meningitis is weak across all lags in both the manual and Textract datasets, with values generally between about $-0.11$ and $0.09$ (\cref{tab:ccf_summary}). Because these correlations are close to zero throughout, this pair is the one for which a relative-difference metric was least informative: at several lags the manual correlation itself is close to zero, so any ratio against it is unstable regardless of how small the absolute discrepancy is. The manual series peaks at lag $3$ and the Textract series at lag $2$, a change in peak lag of $-1$ week; the change in peak correlation is not small in relative terms, though both values are close to zero ($0.0848$ manual vs.\ $0.1366$ Textract, a difference of $0.0517$). The largest absolute discrepancy between the two series is $0.0750$ (at lag $4$) and the root-mean-square difference is $0.0401$ -- both smaller in absolute terms than the Measles/Chickenpox discrepancies above, even though a relative-difference expression of this same gap would read an order of magnitude larger, for the reason given above. Textract captures the overall cross-correlation pattern here, and the largest discrepancies occur at lags where both correlations are already small.
+The cross-correlation between Measles and Meningitis is weak across all lags in both the manual and Textract datasets, with values generally between about $-0.11$ and $0.09$ (\cref{tab:ccf_summary}). Because these correlations are close to zero throughout, this pair is the one for which a relative-difference metric was least informative: at several lags the manual correlation itself is close to zero, so any ratio against it is unstable regardless of how small the absolute discrepancy is. The manual series peaks at lag $3$ and the Textract series at lag $2$, a change in peak lag of $-1$ week; the change in peak correlation is not small in relative terms, though both values are close to zero ($0.0848$ manual vs.\ $0.1366$ Textract, a difference of $0.0517$). The largest absolute discrepancy between the two series is $0.0750$ (at lag $4$) and the root-mean-square difference is $0.0401$ -- both larger in absolute terms than the Measles/Chickenpox discrepancies above, and a relative-difference expression of this same gap would read an order of magnitude larger still, for the reason given above. Textract captures the overall cross-correlation pattern here, and the largest discrepancies occur at lags where both correlations are already small.
 
 
 
@@ -477,7 +478,7 @@ The cross-correlation between Measles and Meningitis is weak across all lags in 
 Finally, the same procedure is repeated for a third pair of diseases, namely Chickenpox and Mumps. The Textract series used here are manually corrected, following the same procedure applied to the Meningitis data (\cref{sec:hardcoding}). Time series for both diseases are extracted from the manually curated dataset, and the Textract output, and the corresponding incidence curves are plotted in \cref{fig:comparisonIncidentschM}. Prior to computing the cross-correlation, the extracted data undergoes the same post-processing pipeline used for the Meningitis dataset. In particular, OCR-related errors identified as outliers are manually corrected to ensure that the resulting time series is suitable for analysis. This correction procedure is described in detail in \cref{sec:hardcoding}.
 
 
-We see in \cref{fig:comparisonCrossCorrelation3} that the graphs of the cross-correlation calculated between Chickenpox and Mumps are very similar between the manual and Textract data. The summary statistics in \cref{tab:ccf_summary} (per-lag values in \nameref{sec:supp}, Table S3) confirm this: the differences between the two datasets at each lag are small.
+We see in \cref{fig:comparisonCrossCorrelation3} that the graphs of the cross-correlation calculated between Chickenpox and Mumps are very similar between the manual and Textract data. The summary statistics in \cref{tab:ccf_summary} (per-lag values in \hyperref[sec:supp]{Supplementary Material}, Table S3) confirm this: the differences between the two datasets at each lag are small.
 
 \begin{figure}[h!]
     \centering
@@ -507,20 +508,23 @@ The cross-correlation between diseases and the conclusions we draw from their CC
 
 \Cref{tab:ccf_summary} collects these summary statistics for all three disease pairs. A strong cross-correlation near lag zero is expected for two seasonal childhood infections circulating in the same population and is not, on its own, a demanding evaluation target; what these comparisons test is whether Textract preserves the \emph{structure} of that dependence (peak lag, and the overall shape of the CCF) rather than establishing a stringent benchmark of extraction accuracy.
 
+\begin{landscape}
 \begin{table}[h]
 \centering
-\begin{tabular}{lp{2.7cm}ccccccccc}
+\scriptsize
+\begin{tabular}{lp{2.5cm}ccccccccc}
 \toprule
-Disease pair & Data version & Max abs diff & Lag at max & RMS diff & Peak lag M & Peak lag T & $\Delta$ peak lag & Peak $\rho$ M & Peak $\rho$ T & $\Delta$ peak $\rho$ \\
+Disease pair & Data version & Max $|\Delta|$ & Lag at max & RMS diff & Lag M & Lag T & $\Delta$Lag & $\rho$ M & $\rho$ T & $\Delta\rho$ \\
 \midrule
 Measles vs Chickenpox & processed, no manual correction & 0.0699 & 7 & 0.0376 & 0 & 0 & 0 & 0.8584 & 0.8329 & $-0.0255$ \\
 Measles vs Meningitis & \textbf{manually corrected} & 0.0750 & 4 & 0.0401 & 3 & 2 & $-1$ & 0.0848 & 0.1366 & $0.0517$ \\
 Chickenpox vs Mumps & \textbf{manually corrected} & 0.0145 & 5 & 0.0080 & 0 & 0 & 0 & 0.8983 & 0.8974 & $-0.0009$ \\
 \bottomrule
 \end{tabular}
-\caption{Summary of cross-correlation agreement between manual and Textract series for all three disease pairs, computed by \texttt{analysis/ccf\_summary.py} from the per-lag CCF values (\nameref{sec:supp}, Tables S1--S3), which are themselves computed by \texttt{analysis/cross\_correlation.R} after merging the manual and Textract series on their shared week identifier and restricting to weeks with complete data in both sources at every lag (M3 fix; the two series are no longer NA-dropped independently, which previously let them cover different numbers of calendar weeks per disease pair). Lag range $k \in \{-12,\dots,+12\}$ (n = 25 lags). Sign convention: all differences are Textract $-$ Manual. ``M''/``T'' denote Manual/Textract. Peak-lag ties (S3.2: smaller $|k|$, then negative lag) did not occur for any of the three pairs. \textbf{Data version} follows \cref{tab:pipeline}: two of the three pairs (Meningitis, Mumps) use Textract series manually corrected following inspection (\cref{sec:hardcoding}); Measles vs.\ Chickenpox does not.}
+\caption{Summary of cross-correlation agreement between manual and Textract series for all three disease pairs, computed by \texttt{analysis/ccf\_summary.py} from the per-lag CCF values (\hyperref[sec:supp]{Supplementary Material}, Tables S1--S3), which are themselves computed by \texttt{analysis/cross\_correlation.R} after merging the manual and Textract series on their shared week identifier and restricting to weeks with complete data in both sources at every lag (the two series are no longer NA-dropped independently, which previously let them cover different numbers of calendar weeks per disease pair). Lag range $k \in \{-12,\dots,+12\}$ (n = 25 lags). Sign convention: all differences are Textract $-$ Manual. ``M''/``T'' denote Manual/Textract; ``Lag M''/``Lag T'' and ``$\rho$ M''/``$\rho$ T'' are the peak lag and peak correlation for each series. Peak-lag ties (smaller $|k|$, then negative lag) did not occur for any of the three pairs. \textbf{Data version} follows \cref{tab:pipeline}: two of the three pairs (Meningitis, Mumps) use Textract series manually corrected following inspection (\cref{sec:hardcoding}); Measles vs.\ Chickenpox does not.}
 \label{tab:ccf_summary}
 \end{table}
+\end{landscape}
 
 \clearpage
 
@@ -705,7 +709,7 @@ For an automation tool to successfully improve and accelerate the data entry pro
     \item Close to the original dataset or
     \item Easy to process and fix the errors it produces
 \end{enumerate}
-If too much human correction is necessary, the time saved becomes relatively small, so the tool is not successful. As well, even with modest time saving, data correction is a less pleasant task for humans than data entry. In our own preliminary exploration (\nameref{sec:supp}, S5 Text), the conversational model we tried before Textract produced errors prevalent and tedious enough to fix that we abandoned it in favour of a tool purpose-built for table extraction.
+If too much human correction is necessary, the time saved becomes relatively small, so the tool is not successful. As well, even with modest time saving, data correction is a less pleasant task for humans than data entry. In our own preliminary exploration (\hyperref[sec:supp]{Supplementary Material}, S5 Text), the conversational model we tried before Textract produced errors prevalent and tedious enough to fix that we abandoned it in favour of a tool purpose-built for table extraction.
 
 In comparison, the errors present in Textract's table extraction are shown to be of a different character than typical manual entry errors. Textract's errors are often either small (differing from the reference value by one or two characters, with a small influence on various statistical tests on the dataset) or large. This second, large-magnitude type of error is relatively rare and occurs specifically in the extraction of disease-name string values (\cref{sec:levdist}).
 
@@ -727,7 +731,7 @@ A further limitation concerns data leakage in the development of our normalizati
 
 \paragraph{No external evaluation on a structurally different archive.} All results in this paper come from a single source (CANDID) with a consistent printed template; transfer of these findings to other table layouts, languages, typographies, or scan qualities is untested. \cref{sec:futurework} discusses a structurally distinct Quebec provincial dataset as a candidate for such a test; we have not analysed it here.
 
-\paragraph{Single tool, single version.} This study evaluates one extraction tool and does not constitute a controlled comparison against alternatives; the informal exploration described in the Supporting Information (\nameref{sec:supp}, S5 Text) that led us to Textract was not a rigorous benchmark, and no controlled comparison against other document-extraction tools or current document-capable language models was performed. Beyond that, we used one commercial service at one point in time, without pinning or recording a specific model or API version; Amazon may change Textract's underlying models at any time without notice, so the extraction results reported here may not reproduce exactly if the tables were re-extracted today. Our choice of Textract reflects its suitability for this task rather than a demonstrated advantage over alternatives.
+\paragraph{Single tool, single version.} This study evaluates one extraction tool and does not constitute a controlled comparison against alternatives; the informal exploration described in the Supporting Information (\hyperref[sec:supp]{Supplementary Material}, S5 Text) that led us to Textract was not a rigorous benchmark, and no controlled comparison against other document-extraction tools or current document-capable language models was performed. Beyond that, we used one commercial service at one point in time, without pinning or recording a specific model or API version; Amazon may change Textract's underlying models at any time without notice, so the extraction results reported here may not reproduce exactly if the tables were re-extracted today. Our choice of Textract reflects its suitability for this task rather than a demonstrated advantage over alternatives.
 
 The growth-rate and doubling-time comparison (\crefrange{table:measles_growthrate_results}{tab:growthrateschickenpox}) is similarly limited in scope: only a single Textract data version -- the Stage-2 processed series, without manual spike correction -- is available for Measles and Chickenpox, since the manual correction procedure of \cref{sec:hardcoding} was applied only to the Meningitis and Mumps series. We are therefore unable to test whether the growth-rate estimate is stable across raw, processed, and manually corrected versions of the same disease's data, which would be a useful further check; doing so would require applying the same manual review used for Meningitis and Mumps to the Measles and Chickenpox series as well, which was not done for this paper.
 
@@ -736,7 +740,7 @@ The growth-rate and doubling-time comparison (\crefrange{table:measles_growthrat
 \bigskip
 \noindent The limitations above concern the validity and scope of what was measured. The remainder of this section concerns the operational cost of using Textract, which does not affect the validity of the results but is relevant to a researcher deciding whether to adopt this workflow.
 
-The main operational limitation of Textract is the barrier to entry associated with AWS software. Limited experience with software development might increase the effort required to use Textract. Beyond account set-up and writing the extraction script, connecting the code to an AWS account involves an AWS ID, secret key, secret access key, and more (\nameref{sec:supp}, S1). However, once the initial setup is complete, researchers have complete control over how the data is processed and extracted: for example, a researcher can choose to omit confidence levels, or process only certain elements of the table or certain pages of the dataset. Unlike the data-specific post-processing steps that follow extraction, the same extraction script can be used for any scanned document of a table.
+The main operational limitation of Textract is the barrier to entry associated with AWS software. Limited experience with software development might increase the effort required to use Textract. Beyond account set-up and writing the extraction script, connecting the code to an AWS account involves an AWS ID, secret key, secret access key, and more (\hyperref[sec:supp]{Supplementary Material}, S1). However, once the initial setup is complete, researchers have complete control over how the data is processed and extracted: for example, a researcher can choose to omit confidence levels, or process only certain elements of the table or certain pages of the dataset. Unlike the data-specific post-processing steps that follow extraction, the same extraction script can be used for any scanned document of a table.
 
 Another operational limitation is the time required by the software to extract the raw data: the code to extract the full CANDID dataset of 156 tables took around 15 minutes to run and terminate. This could likely be reduced, for instance by cropping the original scans to the relevant part of the table or by omitting confidence levels, but optimizing the API calls was not a priority of this project.
 
@@ -757,12 +761,15 @@ Taken together, this evaluation indicates that Textract, combined with the datas
 
 
 \section*{Acknowledgments}
-We would like to express sincere gratitude to Dr. Ben Bolker for his valuable direction and Noah Juravsky for the many insightful discussions and technical support that significantly accelerated the progress of this work. 
+We would like to express sincere gratitude to Dr. Ben Bolker for his valuable direction and Noah Juravsky for the many insightful discussions that significantly accelerated the progress of this work. 
 \clearpage
 \printbibliography 
 
 \clearpage
-\section*{Supplementary Material}\label{sec:supp}
+\section*{Supplementary Material}
+\phantomsection
+\label{sec:supp}
+\addcontentsline{toc}{section}{Supplementary Material}
 
 \textbf{S1 Text. AWS Textract extraction script and setup instructions.}
 
@@ -785,7 +792,13 @@ To run \texttt{AWS\_Python\_Table\_Extraction.py}, first create a free AWS accou
 
 Generate an Access Key ID and Secret Access Key under that user's security credentials -- save these immediately, as the secret key is shown only once. Install the AWS CLI and run \texttt{aws configure --profile textract-project} to store these credentials under a named profile rather than the default profile, entering the access key, secret key, and a default region (e.g., us-east-1, which matches the script's default). Set \texttt{AWS\_PROFILE=textract-project} (or pass \texttt{profile\_name} to \texttt{boto3.Session}) so the script authenticates as this scoped user; where your institution supports it, short-lived credentials issued via AWS IAM Identity Center are preferable to long-lived access keys. Never commit credentials to version control, and rotate or delete the access key when the project ends. A free tier exists for Textract usage, with terms that vary by API operation and change over time; consult the current AWS Textract pricing page for the applicable limits and per-page rates before running a large extraction job.
 
-Once credentials are configured, place your PDF or image files (PDF, PNG, JPG, or TIFF) in a single input folder and run the script from the command line as \texttt{python AWS\_Python\_Table\_Extraction.py <input\_dir> <output\_dir>}, which will create two CSV files per document -- one with extracted table cell text and one with per-cell confidence scores -- in the specified output folder. Because this script uses Textract's synchronous AnalyzeDocument API, each input file is limited to a single page; multi-page PDFs should be split beforehand (e.g., with a tool like pypdf) or processed via Textract's asynchronous API if full multi-page support is needed. See also \cite{aws_textract}.
+Once credentials are configured, place your PDF or image files (PDF, PNG, JPG, or TIFF) in a single input folder and run the script from the command line:
+
+\begin{lstlisting}[basicstyle=\ttfamily\footnotesize]
+python AWS_Python_Table_Extraction.py <input_dir> <output_dir>
+\end{lstlisting}
+
+\noindent This will create two CSV files per document -- one with extracted table cell text and one with per-cell confidence scores -- in the specified output folder. Because this script uses Textract's synchronous AnalyzeDocument API, each input file is limited to a single page; multi-page PDFs should be split beforehand (e.g., with a tool like pypdf) or processed via Textract's asynchronous API if full multi-page support is needed. See also \cite{aws_textract}.
 
 \noindent\textbf{S2 Text. Repository.}
 
@@ -975,7 +988,7 @@ Writing -- review \& editing: Eden Ofek Nalian, David J.D. Earn, Steven C. Walke
 This study used aggregate historical public-health records published by the Dominion Bureau of Statistics, comprising weekly counts of notifiable disease cases by province and territory. The data contain no individual-level or identifiable information, and no human participants were involved. Institutional review board approval was therefore not required.
 
 \section*{Data Availability}
-The Canadian Disease Incidence Dataset (CANDID) used in this study is publicly available through McMaster University's Theoretical Biology group \cite{CANDID}. All code (extraction, post-processing, and analysis scripts) and intermediate/derived data files underlying every figure and table reported in this manuscript are available in the public repository at \url{https://github.com/EdenNal/Textract_Results} (M5; also referenced as \nameref{sec:supp}, S2 Text). Raw Amazon Textract API responses (JSON) and the exact AWS region/account configuration and extraction date(s) used to produce them are not preserved in this repository; only the processed CSV outputs of the extraction step are available (see Limitations, \cref{sec:limitations}).
+The Canadian Disease Incidence Dataset (CANDID) used in this study is publicly available through McMaster University's Theoretical Biology group \cite{CANDID}. All code (extraction, post-processing, and analysis scripts) and intermediate/derived data files underlying every figure and table reported in this manuscript are available in the public repository at \url{https://github.com/EdenNal/Textract_Results} (also referenced as \hyperref[sec:supp]{Supplementary Material}, S2 Text). Raw Amazon Textract API responses (JSON) and the exact AWS region/account configuration and extraction date(s) used to produce them are not preserved in this repository; only the processed CSV outputs of the extraction step are available (see Limitations, \cref{sec:limitations}).
 
 \section*{Funding}
 The author(s) received no specific funding for this work.
