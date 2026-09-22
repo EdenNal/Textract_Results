@@ -6,10 +6,10 @@
 #   Fig 18  Chickenpox time series with epigrowthfit's doubling-time windows
 #           (manual + textract panels)
 #   Table 4 Manual-vs-Textract peak comparison for Measles: fit range, peak
-#           week/cases, signed delta-week and delta-cases (Textract - Manual,
-#           per T2-7), delta-cases %, and doubling time with 95% CI
+#           week/cases, signed delta-week and delta-cases (Textract - Manual),
+#           delta-cases %, and doubling time with 95% CI
 #   Table 5 Same comparison for Chickenpox
-#   growth_rate_summary.csv (T2-8): one row per disease x source, with the
+#   growth_rate_summary.csv: one row per disease x source, with the
 #           initial growth rate r (per week) and its 95% CI, the doubling
 #           time Td and its 95% CI, n observations per fitting window,
 #           convergence status, and Delta_r / Delta_Td (Textract - Manual).
@@ -25,7 +25,7 @@
 #   data/analysis_intermediates/table5_chickenpox_peak_comparison.csv
 #   data/analysis_intermediates/growth_rate_summary.csv
 #
-# Model specification (T2-8 S4.2): egf_model(curve = "logistic") with all
+# Model specification: egf_model(curve = "logistic") with all
 # other egf_model() arguments left at their package defaults: family =
 # "nbinom" (negative binomial dispersion), day_of_week = FALSE (not
 # applicable -- the data are weekly, not daily), excess = FALSE. Every
@@ -95,7 +95,7 @@ fit_growth_windows <- function(data, windows, time_col = "Row", cases_col) {
   fit
 }
 
-# Number of non-missing weekly observations inside [w[1], w[2]] (T2-8 S4.1).
+# Number of non-missing weekly observations inside [w[1], w[2]].
 n_obs_in_window <- function(data, window, time_col = "Row", cases_col) {
   df <- data.frame(
     time  = as.numeric(data[[time_col]]),
@@ -129,7 +129,7 @@ peak_comparison_table <- function(manual_df, textract_df, windows, cases_col,
     pM <- peak_in_window(manual_df,   w, cases_col = cases_col)
     pT <- peak_in_window(textract_df, w, cases_col = cases_col)
 
-    # T2-7 sign convention: difference = Textract - Manual, throughout.
+    # Sign convention: difference = Textract - Manual, throughout.
     delta_week  <- if (!is.na(pM["week"]))  pT["week"]  - pM["week"]  else NA
     delta_cases <- if (!is.na(pM["cases"])) round(pT["cases"]) - round(pM["cases"]) else NA
     pct_cases   <- if (!is.na(pM["cases"]) && pM["cases"] != 0) (pT["cases"] - pM["cases"]) / pM["cases"] * 100 else NA
@@ -174,7 +174,7 @@ peak_comparison_table <- function(manual_df, textract_df, windows, cases_col,
 
 # Extract the doubling-time estimate + 95% CI from an egf fit.
 #
-# NOTE (T2-7 fix): the previous implementation called
+# NOTE: the previous implementation called
 # fitted(fit, top = "log(r)", se = TRUE) and read $value/$se columns from
 # the result. In epigrowthfit 0.15.5, that call returns a bare matrix with
 # a single "log(r)" column and NO standard-error column (se = TRUE is not
@@ -204,7 +204,7 @@ doubling_times <- function(fit) {
   log_r_lo  <- unname(ci[1, 1])
   log_r_hi  <- unname(ci[1, 2])
 
-  r    <- exp(log_r_hat)   # per week (time is indexed in weeks; T2-8 S4.1)
+  r    <- exp(log_r_hat)   # per week (time is indexed in weeks)
   r_lo <- exp(log_r_lo)
   r_hi <- exp(log_r_hi)
 
@@ -320,7 +320,7 @@ process_disease <- function(disease, fig_path, table_path,
                  td_manual = td_manual, td_textract = td_textract))
 }
 
-# Build the T2-8 growth-rate summary rows for one disease: one row per
+# Build the growth-rate summary rows for one disease: one row per
 # window x source, with r, Td, their CIs, n_obs, convergence, and the
 # Manual-vs-Textract comparison (Delta_r, Delta_Td, CI overlap, whether
 # each point estimate falls inside the other source's CI).
@@ -374,10 +374,11 @@ textract_file <- file.path(ts_dir, "1956-1958_textract_timeseries_chickenpox_mea
 # tolerance, see tab:pipeline in the paper), WITHOUT manual spike correction
 # ("hardcoding") -- that correction was applied only to the Meningitis and
 # Mumps series (see analysis/cross_correlation.R), not to Measles/Chickenpox.
-# T2-8 S6 asks for fits on "each available data version (raw, processed,
-# manually corrected)"; only the processed version exists for these two
-# diseases, so that multi-version comparison is not run here. See the T2-8
-# note in README.md for the full explanation.
+# A multi-data-version comparison (raw, processed, manually corrected)
+# would require a "manually corrected" version of the Measles/Chickenpox
+# series, which does not exist; only the processed version is available
+# for these two diseases, so that comparison is not run here. See the
+# "Known limitations" note in README.md for the full explanation.
 DATA_VERSION <- "processed, no manual correction"
 
 manual_df_measles   <- read.csv(manual_file)
@@ -401,7 +402,7 @@ res_chickenpox <- process_disease(
   textract_file = textract_file
 )
 
-# ---- T2-8: tidy growth-rate summary CSV, one row per disease x window x source ----
+# ---- Tidy growth-rate summary CSV, one row per disease x window x source ----
 
 grs_measles <- growth_rate_summary_rows(
   "Measles", DATA_VERSION, WINDOWS,

@@ -58,7 +58,7 @@ LAG_MAX <- 12
 # Manual n=156, Textract n=148), breaking the like-for-like lag comparison.
 #
 # Fix: merge manual and Textract on their shared explicit week identifier
-# (the "Row" column, which both series share as the CNDD week sequence
+# (the "Row" column, which both series share as the CANDID week sequence
 # 1956 wk1 .. 1958 wk52) *before* dropping anything, and keep only weeks
 # where all four values needed (manual x, manual y, Textract x, Textract y)
 # are present. Both series' CCFs are then computed over the identical,

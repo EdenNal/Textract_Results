@@ -1,17 +1,16 @@
 """
-Cross-correlation summary metrics for Section 5.2.1 of the paper (Ticket T2-7).
+Cross-correlation summary metrics for Section 5.2.1 of the paper.
 
 Replaces the unstable relative-difference column in the per-lag CCF tables
 with a small set of stable summary statistics, computed once here and
 consumed directly by both the main-text summary table and the Methods text.
 
-Sign convention (fixed throughout, per T2-7 S3.1 / M5.3): difference =
-Textract - Manual. As of the M3/M5 fix, analysis/cross_correlation.R's
-"Difference" column also uses this convention directly (it previously
-computed Manual - Textract; that bug is fixed there). This script still
-recomputes Manual/Textract from the raw columns and does not rely on the
-sign of the pre-existing "Difference" column, but the consistency check
-below now expects them to agree in sign as well as magnitude.
+Sign convention (fixed throughout): difference = Textract - Manual.
+analysis/cross_correlation.R's "Difference" column also uses this
+convention directly. This script still recomputes Manual/Textract from
+the raw columns and does not rely on the sign of the pre-existing
+"Difference" column, but the consistency check below expects them to
+agree in sign as well as magnitude.
 
 Inputs (already on disk, produced by analysis/cross_correlation.R):
     data/analysis_intermediates/table1_measles_chickenpox_ccf_diff.csv   (processed, no manual correction)
@@ -65,7 +64,7 @@ PAIRS = [
 
 
 def peak_lag_with_tiebreak(lags, values):
-    """argmax with the T2-7 S3.2 tie rule: smaller |k|, then negative lag."""
+    """argmax with the tie rule: smaller |k|, then negative lag."""
     max_val = max(values)
     tied = [lag for lag, v in zip(lags, values) if v == max_val]
     if len(tied) == 1:
@@ -91,7 +90,7 @@ def summarize_pair(pair):
         assert abs((t - m) - d) < 1e-4, (
             f"{pair['name']}: recomputed Textract-Manual does not match "
             f"existing Difference column to 4dp -- stop, this is a separate "
-            f"problem (T2-7 S7)."
+            f"problem."
         )
 
     diff_tm = [t - m for m, t in zip(manual, textract)]  # Textract - Manual
