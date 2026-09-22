@@ -1,0 +1,76 @@
+Disease pair,Data version,Lag,Manual,Textract,Difference
+Measles vs Chickenpox,"processed, no manual correction",-12,0.0217,0.0244,0.0027
+Measles vs Chickenpox,"processed, no manual correction",-11,0.1057,0.0871,-0.0186
+Measles vs Chickenpox,"processed, no manual correction",-10,0.176,0.1571,-0.019
+Measles vs Chickenpox,"processed, no manual correction",-9,0.2476,0.2199,-0.0277
+Measles vs Chickenpox,"processed, no manual correction",-8,0.3334,0.3213,-0.0121
+Measles vs Chickenpox,"processed, no manual correction",-7,0.418,0.3996,-0.0184
+Measles vs Chickenpox,"processed, no manual correction",-6,0.5087,0.4891,-0.0196
+Measles vs Chickenpox,"processed, no manual correction",-5,0.5767,0.5315,-0.0453
+Measles vs Chickenpox,"processed, no manual correction",-4,0.6284,0.5877,-0.0407
+Measles vs Chickenpox,"processed, no manual correction",-3,0.6745,0.6264,-0.0482
+Measles vs Chickenpox,"processed, no manual correction",-2,0.7473,0.7009,-0.0464
+Measles vs Chickenpox,"processed, no manual correction",-1,0.8092,0.7766,-0.0326
+Measles vs Chickenpox,"processed, no manual correction",0,0.8584,0.8329,-0.0255
+Measles vs Chickenpox,"processed, no manual correction",1,0.8377,0.8078,-0.0298
+Measles vs Chickenpox,"processed, no manual correction",2,0.8162,0.7682,-0.048
+Measles vs Chickenpox,"processed, no manual correction",3,0.7908,0.7385,-0.0524
+Measles vs Chickenpox,"processed, no manual correction",4,0.7661,0.7412,-0.0248
+Measles vs Chickenpox,"processed, no manual correction",5,0.7225,0.6668,-0.0557
+Measles vs Chickenpox,"processed, no manual correction",6,0.6646,0.6102,-0.0544
+Measles vs Chickenpox,"processed, no manual correction",7,0.6236,0.5536,-0.0699
+Measles vs Chickenpox,"processed, no manual correction",8,0.5595,0.5395,-0.0199
+Measles vs Chickenpox,"processed, no manual correction",9,0.4943,0.4662,-0.0281
+Measles vs Chickenpox,"processed, no manual correction",10,0.437,0.3991,-0.0379
+Measles vs Chickenpox,"processed, no manual correction",11,0.3893,0.3386,-0.0507
+Measles vs Chickenpox,"processed, no manual correction",12,0.3276,0.3091,-0.0185
+Measles vs Meningitis,manually corrected,-12,0.0236,0.0279,0.0042
+Measles vs Meningitis,manually corrected,-11,0.0258,0.0357,0.01
+Measles vs Meningitis,manually corrected,-10,0.0055,0.0193,0.0138
+Measles vs Meningitis,manually corrected,-9,0.0291,0.0484,0.0193
+Measles vs Meningitis,manually corrected,-8,0.0348,0.032,-0.0028
+Measles vs Meningitis,manually corrected,-7,0.0476,0.0392,-0.0084
+Measles vs Meningitis,manually corrected,-6,0.0052,0.014,0.0087
+Measles vs Meningitis,manually corrected,-5,-0.0277,-0.0043,0.0234
+Measles vs Meningitis,manually corrected,-4,-0.0093,0.0064,0.0157
+Measles vs Meningitis,manually corrected,-3,-0.0301,0.0152,0.0453
+Measles vs Meningitis,manually corrected,-2,0.005,0.0748,0.0699
+Measles vs Meningitis,manually corrected,-1,0.0594,0.1153,0.0559
+Measles vs Meningitis,manually corrected,0,0.061,0.1168,0.0558
+Measles vs Meningitis,manually corrected,1,0.0384,0.0818,0.0434
+Measles vs Meningitis,manually corrected,2,0.0777,0.1366,0.0589
+Measles vs Meningitis,manually corrected,3,0.0848,0.1317,0.0469
+Measles vs Meningitis,manually corrected,4,0.0361,0.111,0.075
+Measles vs Meningitis,manually corrected,5,-0.0027,0.0588,0.0615
+Measles vs Meningitis,manually corrected,6,0.0188,0.0666,0.0478
+Measles vs Meningitis,manually corrected,7,0.0136,0.0299,0.0163
+Measles vs Meningitis,manually corrected,8,-0.0299,0.0004,0.0302
+Measles vs Meningitis,manually corrected,9,-0.0339,0.011,0.0449
+Measles vs Meningitis,manually corrected,10,-0.0392,0.0077,0.0469
+Measles vs Meningitis,manually corrected,11,-0.0755,-0.0569,0.0186
+Measles vs Meningitis,manually corrected,12,-0.1223,-0.1041,0.0182
+Chickenpox vs Mumps,manually corrected,-12,0.2937,0.2919,-0.0018
+Chickenpox vs Mumps,manually corrected,-11,0.3655,0.3638,-0.0017
+Chickenpox vs Mumps,manually corrected,-10,0.4384,0.4373,-0.0011
+Chickenpox vs Mumps,manually corrected,-9,0.4985,0.4994,0.0009
+Chickenpox vs Mumps,manually corrected,-8,0.5532,0.5535,0.0003
+Chickenpox vs Mumps,manually corrected,-7,0.6133,0.6112,-0.0021
+Chickenpox vs Mumps,manually corrected,-6,0.672,0.671,-0.0009
+Chickenpox vs Mumps,manually corrected,-5,0.7107,0.7082,-0.0026
+Chickenpox vs Mumps,manually corrected,-4,0.7554,0.7543,-0.0011
+Chickenpox vs Mumps,manually corrected,-3,0.7909,0.7857,-0.0052
+Chickenpox vs Mumps,manually corrected,-2,0.8246,0.8146,-0.01
+Chickenpox vs Mumps,manually corrected,-1,0.8706,0.8703,-0.0002
+Chickenpox vs Mumps,manually corrected,0,0.8983,0.8974,-0.0009
+Chickenpox vs Mumps,manually corrected,1,0.8494,0.8448,-0.0046
+Chickenpox vs Mumps,manually corrected,2,0.7978,0.7878,-0.01
+Chickenpox vs Mumps,manually corrected,3,0.7567,0.7448,-0.0119
+Chickenpox vs Mumps,manually corrected,4,0.7245,0.7115,-0.0129
+Chickenpox vs Mumps,manually corrected,5,0.6879,0.6734,-0.0145
+Chickenpox vs Mumps,manually corrected,6,0.6298,0.6177,-0.012
+Chickenpox vs Mumps,manually corrected,7,0.5611,0.5511,-0.01
+Chickenpox vs Mumps,manually corrected,8,0.4721,0.4643,-0.0078
+Chickenpox vs Mumps,manually corrected,9,0.3954,0.3896,-0.0058
+Chickenpox vs Mumps,manually corrected,10,0.3362,0.3265,-0.0097
+Chickenpox vs Mumps,manually corrected,11,0.2591,0.2457,-0.0135
+Chickenpox vs Mumps,manually corrected,12,0.1819,0.1677,-0.0143

@@ -1,0 +1,5 @@
+criterion,n_all_cells,pct_all_cells,n_numeric_both,pct_numeric_both,n_numeric_manual_ref_only,pct_numeric_manual_ref_only
+Strict equality,53872,73.98,26069,77.92,28255,71.89
++ Commas/spaces normalised,53872,76.84,26069,83.8,28255,77.32
++ Numeric-only equality,53872,88.53,26069,95.58,28255,92.95
++ Row-shift tolerated (final),53872,88.53,26069,95.58,28255,92.95

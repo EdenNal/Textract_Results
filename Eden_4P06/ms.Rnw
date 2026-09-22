@@ -1,0 +1,172 @@
+\documentclass[12pt]{article}
+
+\input{preamble}
+
+\title{The solution to everything}
+\author{So-and-so$^1$ and David J.\,D.\ Earn$^2$\\
+  $^1$Such-and-such University;\\
+  $^2$Department of Mathematics and Statistics,\\
+  McMaster University, Hamilton, Ontario, Canada, L8S 4K1
+  \\ 
+  \medskip
+  \spewmoddates
+}
+
+<<setup, echo=FALSE, include=FALSE>>=
+## set default base-graphics plotting options
+knitr::knit_hooks$set(basefig=function(before, options, envir) {
+                   if (before) {
+                       oldpar <- par(bty="l",las=1)
+                       on.exit(par(oldpar))
+                   } else { }
+})
+knitr::opts_chunk$set(error = FALSE)
+## B&W format: https://stackoverflow.com/questions/22666475/how-to-achieve-blackwhite-friendly-syntax-highlighting-in-pdfs-produced-with-kn
+##knitr::opts_knit$set( out.format="latex" )
+##knitr::knit_theme$set("print")
+## override BMB's finicky settings
+options(warnPartialMatchArgs = FALSE,
+          warnPartialMatchAttr = FALSE,
+          warnPartialMatchDollar = FALSE)
+
+@
+\begin{document}
+
+\maketitle
+
+\linenumbers
+
+\begin{abstract}
+  We solve everything.  We do it clearly, concisely, and completely.
+  It is not obvious what we should do next.
+\end{abstract}
+
+%%\begin{keywords}
+%%epidemics, SIR model, \dots
+%%\end{keywords}
+
+%%\begin{MSCcodes}
+%%34E05, 34E13, 37N25, 92D30
+%%\end{MSCcodes}
+
+\section{Introduction}\label{sec:intro}
+
+Nobody has solved everything before.
+Now is the time.
+
+\section{Methods}\label{sec:methods}
+
+This is how to solve everything:
+
+Many \LaTeX\ packages and macros are loaded when you
+\verb|\input{preamble.tex}|, which is done in \texttt{ms.tex}.
+
+Rather than \macro{ref} or \macro{eqref}, use \macro{cref} (from the
+\texttt{cleveref} package) for referring to equations, figures,
+sections, appendices.  For example, use \verb|\cref{sec:results}| to
+get \cref{sec:results} and \verb|\cref{eq:everything,fig:everything,app:ToDo}|
+to get \cref{eq:everything,fig:everything,app:ToDo}.
+
+Use \macro{linenumbers} to get line numbers, and comment out this
+command if you don't want line numbers.  To ensure you get line numbers
+in paragraphs that include an \texttt{align} environment, enclose in a
+\verb|linenomath*| environment like so:
+\begin{verbatim}
+\begin{linenomath*}
+\begin{align}\label{eq:everything}
+  U = 0,
+\end{align}
+\end{linenomath*}
+\end{verbatim}
+This example generated \cref{eq:everything} below.
+
+\subsection{Fancy symbols}
+
+\david{This subsection is in progress\dots}
+
+Developing good notation is often a serious challenge.
+For example, \cite{ParsEarn24} used $\Xyb{0}{i}(y)$ for
+an approximation to $X(y)$ within the $y$-axis
+boundary layer.  The \texttt{scalerel} package is very helpful
+for constructing complicated symbols in a way that scales
+appropriately
+when they are used in subscripts.   The macros used
+in \cite{ParsEarn24} produced $A_{\Xyb{0}{i}}$, whereas
+using the \macro{scaleobj} macro from \texttt{scalerel} yields
+$A_{\Xybfancy{0}{i}}$ $A_{\Xybfancy{\Xybfancy{0}{i}}{i}}$
+$A_{\Xybfancy{\scaleobj{0.8}{\Xybfancy{0}{i}}}{i}}$
+
+\newcommand{\tmpout}{{x_{A}}}
+\begin{equation}
+\tmpout_{\tmpout_{\tmpout_{\tmpout}}}
+\end{equation}
+\renewcommand{\tmpout}{{x_{\scaleobj{0.8}{A}}}}
+\begin{equation}
+\tmpout_{\tmpout_{\tmpout_{\tmpout}}}
+\end{equation}
+
+\section{Results}\label{sec:results}
+
+The complete equation for everything is
+\begin{linenomath*}
+\begin{align}\label{eq:everything}
+  U = 0,
+\end{align}
+\end{linenomath*}
+where $U$ is for ``universe''.  This equation is illustrated
+in \cref{fig:everything}.  Remarkably, it does not depend on $\R_0$,
+at least not explicitly.  Even more remarkably, \cref{eq:everything}
+was not mentioned in some mathematical epidemiology review articles
+\cite{Earn+02,Earn04,Earn08,Earn09}.
+
+<<example.calculation>>=
+a <- sqrt(2*pi)
+@ 
+
+\begin{figure}
+  \begin{center}
+    \Huge EVERYTHING
+    %%\includegraphics[width=0.95\textwidth]{fig_everything.pdf}
+<<example.figure, echo=FALSE, fig.height=3>>=
+curve(sin(2*pi*x), lwd=3, las=1)
+@ 
+  \end{center}
+  \caption{This figure illustrates \cref{eq:everything}.}
+  \label{fig:everything}
+\end{figure}
+
+Note that $\sqrt{2\pi}=\Sexpr{a}$ as calculated in the 
+\texttt{example.calculation} chunk above.  You can supress
+the chunk in the typeset document with the chunk option
+\texttt{echo=FALSE}.
+
+\section{Discussion}\label{sec:discussion}
+
+Everything is explained by \cref{eq:everything,fig:everything}.
+
+\section*{Acknowledgements}
+
+DJDE was supported by an NSERC Discovery Grant.
+
+\bibliography{ms}
+\bibliographystyle{vancouver}
+
+%%\input{mstables}
+
+%%\FloatBarrier
+
+%%\input{msfigures}
+
+\appendix
+
+\section{To Do}\label{app:ToDo}
+
+\begin{itemize}
+\item appendices
+\item supplementary information with Figures S1, S2, etc
+\item tables
+\item Rnw
+\item journal templates
+\end{itemize}
+
+\end{document}

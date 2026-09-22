@@ -49,20 +49,50 @@ LAG_MAX <- 12
 
 # ---- Helpers ----
 
-compute_ccf_df <- function(csv_file, x_col, y_col, lag_max = LAG_MAX) {
-  df <- read.csv(csv_file, check.names = FALSE)
-  stopifnot(x_col %in% names(df), y_col %in% names(df))
+# M3 fix: previously this read the manual and Textract series independently,
+# dropped NA rows separately in each, then reset the vector index on drop
+# (x[keep]). That let an internal missing week silently compress the
+# series -- the week after a dropped week became "adjacent" to the week
+# before it -- and, worse, the manual and Textract CCFs ended up computed
+# over different sets of calendar weeks entirely (e.g. Measles-Chickenpox:
+# Manual n=156, Textract n=148), breaking the like-for-like lag comparison.
+#
+# Fix: merge manual and Textract on their shared explicit week identifier
+# (the "Row" column, which both series share as the CNDD week sequence
+# 1956 wk1 .. 1958 wk52) *before* dropping anything, and keep only weeks
+# where all four values needed (manual x, manual y, Textract x, Textract y)
+# are present. Both series' CCFs are then computed over the identical,
+# order-preserving set of weeks, so a dropped internal week is excluded
+# symmetrically from both rather than silently compressed in only one.
+compute_ccf_pair <- function(manual_file, textract_file, x_col, y_col, lag_max = LAG_MAX) {
+  m <- read.csv(manual_file,   check.names = FALSE)
+  t <- read.csv(textract_file, check.names = FALSE)
+  stopifnot("Row" %in% names(m), "Row" %in% names(t))
+  stopifnot(x_col %in% names(m), y_col %in% names(m))
+  stopifnot(x_col %in% names(t), y_col %in% names(t))
 
-  x <- as.numeric(df[[x_col]])
-  y <- as.numeric(df[[y_col]])
-  keep <- complete.cases(x, y)
-  x <- as.numeric(scale(x[keep]))
-  y <- as.numeric(scale(y[keep]))
+  merged <- merge(
+    data.frame(Row = m$Row, Mx = as.numeric(m[[x_col]]), My = as.numeric(m[[y_col]])),
+    data.frame(Row = t$Row, Tx = as.numeric(t[[x_col]]), Ty = as.numeric(t[[y_col]])),
+    by = "Row", all = FALSE
+  )
+  merged <- merged[order(merged$Row), ]
+  keep <- complete.cases(merged$Mx, merged$My, merged$Tx, merged$Ty)
+  merged <- merged[keep, ]
 
-  cc <- ccf(x, y, lag.max = lag_max, plot = FALSE)
-  data.frame(Lag = as.vector(cc$lag),
-             Correlation = as.vector(cc$acf),
-             N = length(x))
+  n_common <- nrow(merged)
+
+  mx <- as.numeric(scale(merged$Mx)); my <- as.numeric(scale(merged$My))
+  tx <- as.numeric(scale(merged$Tx)); ty <- as.numeric(scale(merged$Ty))
+
+  cc_m <- ccf(mx, my, lag.max = lag_max, plot = FALSE)
+  cc_t <- ccf(tx, ty, lag.max = lag_max, plot = FALSE)
+
+  list(
+    manual_df   = data.frame(Lag = as.vector(cc_m$lag), Correlation = as.vector(cc_m$acf), N = n_common),
+    textract_df = data.frame(Lag = as.vector(cc_t$lag), Correlation = as.vector(cc_t$acf), N = n_common),
+    n_common    = n_common
+  )
 }
 
 plot_ccf_panel <- function(ccf_df, title, subtitle) {
@@ -81,8 +111,11 @@ plot_ccf_panel <- function(ccf_df, title, subtitle) {
 # Build the CCFs, write the side-by-side figure, return the difference table.
 process_pair <- function(manual_file, textract_file, x_col, y_col,
                          pair_label, fig_path, table_path) {
-  manual_df   <- compute_ccf_df(manual_file,   x_col, y_col)
-  textract_df <- compute_ccf_df(textract_file, x_col, y_col)
+  pair_ccf    <- compute_ccf_pair(manual_file, textract_file, x_col, y_col)
+  manual_df   <- pair_ccf$manual_df
+  textract_df <- pair_ccf$textract_df
+  message("  Common calendar weeks used for both series (Row-merged, complete cases): n = ",
+          pair_ccf$n_common)
 
   p_manual <- plot_ccf_panel(
     manual_df,
@@ -122,7 +155,9 @@ process_pair <- function(manual_file, textract_file, x_col, y_col,
     data.frame(Lag = textract_df$Lag, Textract = textract_df$Correlation),
     by = "Lag", all = TRUE
   )
-  diff_df$Difference           <- diff_df$Manual - diff_df$Textract
+  # Sign convention: Textract - Manual (matches the manuscript throughout;
+  # see M5.3). Previously this computed Manual - Textract.
+  diff_df$Difference           <- diff_df$Textract - diff_df$Manual
   diff_df$Relative_Difference  <- diff_df$Difference / diff_df$Manual
 
   write.csv(diff_df, table_path, row.names = FALSE)

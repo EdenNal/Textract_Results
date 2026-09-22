@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+% \usepackage{scrtime} 
+\usepackage{booktabs} 
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath} 
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[backend=biber,style=vancouver,sortcites=true]{biblatex}
+\addbibresource{ms2.bib}
+\usepackage{multirow} 
+\usepackage{graphicx} % Required for inserting images
+\usepackage{cleveref}
+\usepackage{blindtext}
+\usepackage{titlesec}
+\usepackage[section]{placeins}
+\usepackage{float}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{orange},
+    commentstyle=\color{gray},
+    showstringspaces=false,
+    breaklines=true,
+    frame=single
+}
+
+%%%%%%%%%%%%
+%% MACROS %%
+%%%%%%%%%%%%
+\usepackage{color}
+%% Show cut text with strikethrough
+\usepackage[normalem]{ulem}
+\newcommand{\stkout}[1]{{\color{blue}\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}}
+%\newcommand{\stkout}[1]{}
+\long\def\hide#1{{\color{lightgray}#1}}
+\long\def\hide#1{{\relax}}
+\newcommand{\commentmacro}{\nocomment}  % PLOS: review comments suppressed
+\newcommand{\showcomment}[3]{\textcolor{#1}{\textbf{[#2: }\textsl{#3}\textbf{]}}}
+\newcommand{\nocomment}[3]{}
+\newcommand{\eden}[1]{\commentmacro{magenta}{Eden}{#1}}
+\newcommand{\david}[1]{\commentmacro{cyan}{David}{#1}}
+\newcommand{\dsugg}[1]{{\color{red}#1}}
+\newcommand{\thickredline}{{\color{red}\bigskip\begin{center}\linethickness{2mm}\line(1,0){250}\end{center}\bigskip}}
+\newcommand{\thickblueline}{{\color{blue}\bigskip\begin{center}\linethickness{2mm}\line(1,0){250}\end{center}\bigskip}}
+\newcommand\ttbackslash{{\tt\char`\\}}
+\newcommand{\macro}[1]{{\tt\ttbackslash#1}}
+
+\begin{document}
+
+\textbf{Research question}
+Among 156 weekly CANDID tables from 1956–1958, how accurately and efficiently does a pre-specified Textract-based pipeline recover analysis-ready incidence data, and how well are selected epidemiological summaries preserved before versus after targeted human review?
+
+\textbf{What the paper will assess}
+\begin{enumerate}
+    \item Stage-by-stage agreement between pipeline output and an adjudicated source-image reference, on a frozen held-out test set (1957–1958), with numerators and denominators stated.
+    \item The human-review burden (records flagged, cells edited, time, cost) required to reach analysis-ready data.
+    \item Whether pre-specified downstream epidemiological summaries survive extraction, reported for raw / automated-only / human-adjudicated data versions.
+\end{enumerate}
+
+i.e
+
+\begin{enumerate}
+    \item How well each stage of the pipeline matches a manually verified reference on a held-out test set (1957--1958), with the number of correct and total cases reported.
+    \item How much human review is needed to produce analysis-ready data, including the number of flagged records, edited cells, time, and cost.
+    \item Whether key epidemiological summaries are preserved after extraction, comparing the raw, automated-only, and human-reviewed datasets.
+\end{enumerate}
+
+\textbf{Limitations, out of scope}
+\begin{enumerate}
+    \item Generalization to historical tables at large, other layouts, or handwriting.
+    \item
+A controlled LLM-vs-Textract benchmark 
+\end{enumerate}
+\textbf{Pipeline stages}
+\begin{table}[ht]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{0.8cm}|p{3.2cm}|p{6.2cm}|p{3.2cm}|}
+\hline
+\textbf{Stage} & \textbf{Definition} & \textbf{Operations from Current Manuscript} & \textbf{May See} \\
+\hline
+1 & Raw service output & Textract \texttt{AnalyzeDocument} via \texttt{boto3}, synchronous API, single-page inputs, \texttt{us-east-1}. & Source image only \\
+\hline
+2 & Generic deterministic normalization & Whitespace trimming; string coercion (L141); thousands-separator handling (\texttt{1,000} $\rightarrow$ \texttt{1000}) (L351--353); missing-value symbols (\texttt{..} and \texttt{-}) (L192--193). & Its own input only \\
+\hline
+3 & Pre-specified structural repair & Rules learned on development data and then frozen: header detection using the $>50\%$ string-proportion rule (L145--149); row-length check against the previous row to detect one-cell shifts (L153--155); grouping rows by disease and disease-label matching (L417--420). & Development data only, then frozen \\
+\hline
+4 & Automated anomaly flagging & Flags records for review without consulting a reference transcription: row-sum discrepancy check between contributing cells and reported totals (\S5.1.3); outlier detection using boxplots/violin plots (\S5.3); proposed addition of exported Textract confidence scores as a flagging signal. & Its own input only (no reference values) \\
+\hline
+5 & Human adjudication & Review and correction using the source image, with time and edit counts recorded: Scarlet Fever re-indexing after the ``Scarlet Fever, etc.'' comma shift (L552--559); row-index subtraction fix (L560--566); Meningitis/Mumps spike correction (L568--588); ``correct to known values'' step (L156--158). & Source image only (not the reference transcription) \\
+\hline
+\multicolumn{4}{|l|}{\textbf{Leakage Rules}} \\
+\hline
+\multicolumn{4}{|p{13.8cm}|}{%
+\begin{enumerate}
+    \item Stages 1--4 must run \emph{blind} to the manual reference transcription. Any rule tuned using reference values must either be moved to Stage~5 as a manual correction or derived on development data only and then frozen.
+    \item The operation ``corrected to known values based on the original dataset'' (L156--158) constitutes leakage as currently written. It should be moved to Stage~5, where adjudication is performed against the source scan rather than the earlier transcription.
+    \item ``Successfully extracted'' (L371--374) should mean that both the content and its location are correct. A correct value placed in the wrong cell is a structural error until repaired by a Stage~3 rule or a Stage~5 manual edit.
+\end{enumerate}
+} \\
+\hline
+\end{tabular}
+
+\label{tab:stages}
+\end{table}
+
+\textbf{Primary endpoint:} Agreement of numeric cell values, after alignment, on the frozen 1957--1958 test set. Results are compared against the original source images and reported as the number of correct cells out of the total number of cells, along with results for each table in the test set.
+
+\textbf{Secondary endpoints:}
+\begin{itemize}
+    \item \textbf{Cell-level accuracy:} Proportion of correctly matched cells after alignment, header agreement, table-detection recall, and successful row/column alignment. For each metric, report the numerator, denominator, and whether missing or extra cells are included.
+    \item \textbf{Error types:} Distribution of Levenshtein distances for text cells, along with counts of numeric errors, shifted cells, header errors, and other structural errors.
+    \item \textbf{Downstream analysis:} Compare the raw, automated-only, and human-reviewed datasets separately.
+    \begin{itemize}
+        \item Cross-correlation: maximum absolute difference in the cross-correlation function, RMS difference across lags, change in the peak lag, and change in the peak correlation.
+        \item Peak timing: difference in peak week, reported in weeks.
+        \item Growth rate and doubling time: report the estimated values, fitting method, analysis window, and uncertainty for each dataset version, or omit these analyses if they are not fully supported.
+    \end{itemize}
+    \item \textbf{Effort:} Report person-hours for setup, coding, review, and correction; machine running time; AWS costs (including pricing date); and the cost of the first project compared with processing an additional year of data.
+\end{itemize}
+
+the manual reference transcription exists and is releasable for 1957 and 1958.
+
+for quebec: Option B — Remove it from the main study. Move Quebec to a brief future-work paragraph. Remove it from the Data Availability Statement and Methods as an analyzed dataset. Zero added labour; the paper stays honestly scoped to CANDID.
+
+\end{document}

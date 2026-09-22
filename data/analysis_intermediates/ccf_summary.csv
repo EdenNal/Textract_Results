@@ -1,0 +1,4 @@
+Disease pair,Data version,Max abs diff,Lag at max,Tie at max abs diff,RMS diff,Mean abs diff,Peak lag M,Peak lag T,Tie peak lag M,Tie peak lag T,Delta peak lag,Peak corr M,Peak corr T,Delta peak corr
+Measles vs Chickenpox,"processed, no manual correction",0.0699,7,False,0.0376,0.0339,0,0,False,False,0,0.8584,0.8329,-0.0255
+Measles vs Meningitis,manually corrected,0.075,4,False,0.0401,0.0337,3,2,False,False,-1,0.0848,0.1366,0.0517
+Chickenpox vs Mumps,manually corrected,0.0145,5,False,0.008,0.0062,0,0,False,False,0,0.8983,0.8974,-0.0009
