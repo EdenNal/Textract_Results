@@ -246,6 +246,15 @@ T_{\mathrm{d}} = \frac{\ln 2}{r}
 
 \paragraph{Model specification (\crefrange{table:measles_growthrate_results}{tab:growthrateschickenpox}, \crefrange{fig:growthratesm}{fig:growthrateschickenpox}).} Growth rates and doubling times for Measles and Chickenpox were estimated with \texttt{epigrowthfit} 0.15.5 \cite{JaganRpkg} in R 4.5.1, using \texttt{egf\_model(curve = "logistic")} with all other model arguments left at their package defaults (negative-binomial dispersion, no day-of-week effect -- not applicable, since our data are weekly rather than daily -- and no excess-cases term). Every top-level model parameter, including $\log(r)$, used the default intercept-only formula, so a single growth rate $r$ was estimated jointly from both fitting windows for a given disease and data source, rather than a separate rate per window; \cref{sec:NDD} reports what this implies for the two-window presentation in \crefrange{fig:growthratesm}{fig:growthrateschickenpox}. Confidence intervals are Wald intervals computed on the $\log(r)$ scale via \texttt{confint.egf()} and back-transformed. The two fitting windows (week 35--64 and week 95--126, bracketing the two annual epidemic waves visible in the incidence curves) were chosen by visual inspection of the manually entered time series and then applied unchanged to the corresponding Textract series for the same disease; windows were not re-chosen from the Textract data itself. Weeks with a missing time index or case count inside a window are dropped prior to fitting, matching the treatment used for peak detection above.
 
+\subsection{Use of AI Tools}\label{sec:ai-disclosure}
+% TODO: confirm PLOS heading/section placement for this disclosure before submission.
+% This manuscript has no section literally titled "Methods"; this subsection is
+% placed at the end of Section 5 ("Statistical Measures"), the paper's closest
+% Methods-equivalent section, per PLOS's requirement that AI-tool contributions be
+% reported "in a dedicated section of the Methods." Confirm this satisfies the
+% target journal's current policy before submission.
+We used Anthropic's Claude (Claude Opus 5.5, via claude.ai and Claude Code) and OpenAI's ChatGPT (GPT-4o and GPT-5) to assist with Python and R coding, \LaTeX\ formatting, checking consistency between the manuscript text and analysis outputs, and language editing. All AI-assisted code was reviewed by the authors, and all reported results were regenerated from the scripts in the project repository. All scientific arguments, analyses, interpretations, and conclusions are the authors' own, and the authors take full responsibility for the final manuscript. ChatGPT was also used in a brief exploratory transcription pilot described in \cref{sec:impact} and Supplementary Material (S5 Text); no results from it are used in the analyses.
+
 \section{Analyzing the results from the Canadian Disease Incidence Dataset} \label{sec:NDD}
 The following section explores the accuracy of table extraction on a particular dataset, namely the Canadian Disease Incidence Dataset (CANDID). 
 
@@ -1001,10 +1010,17 @@ Writing -- review \& editing: Eden Ofek Nalian, David J.D. Earn, Steven C. Walke
 This study used aggregate historical public-health records published by the Dominion Bureau of Statistics, comprising weekly counts of notifiable disease cases by province and territory. The data contain no individual-level or identifiable information, and no human participants were involved. Institutional review board approval was therefore not required.
 
 \section*{Data Availability}
-The Canadian Disease Incidence Dataset (CANDID) used in this study is publicly available through McMaster University's Theoretical Biology group \cite{CANDID}. All code (extraction, post-processing, and analysis scripts) and intermediate/derived data files underlying every figure and table reported in this manuscript are available in the public repository at \url{https://github.com/EdenNal/Textract_Results} (also referenced as \hyperref[sec:supp]{Supplementary Material}, S2 Text). Raw Amazon Textract API responses (JSON) and the exact AWS region/account configuration and extraction date(s) used to produce them are not preserved in this repository; only the processed CSV outputs of the extraction step are available (see Limitations, \cref{sec:limitations}).
+The Canadian Disease Incidence Dataset (CANDID) used in this study is publicly available; see \cite{CANDID} for access instructions. All code (extraction, post-processing, and analysis scripts) and intermediate/derived data files underlying every figure and table reported in this manuscript are available in the public repository at \url{https://github.com/EdenNal/Textract_Results} (also referenced as \hyperref[sec:supp]{Supplementary Material}, S2 Text). Raw Amazon Textract API responses (JSON) and the exact AWS region/account configuration and extraction date(s) used to produce them are not preserved in this repository; only the processed CSV outputs of the extraction step are available (see Limitations, \cref{sec:limitations}).
 
 \section*{Funding}
-The author(s) received no specific funding for this work.
+% TODO: confirm PLOS heading/section placement before submission.
+% Per PLOS submission guidelines, funding information is entered directly into
+% the Financial Disclosure field of the online submission system and is not
+% included in the manuscript file; PLOS populates the published article's
+% Funding statement from that field. The actual funding statement for this
+% paper is kept out of this file for that reason and is in
+% submission/financial-disclosure.txt instead, ready to paste into that field.
+Funding information for this manuscript is provided in the Financial Disclosure field of the journal's submission system, per PLOS policy, rather than in the manuscript file.
 
 \section*{Competing Interests}
 The authors have declared that no competing interests exist.

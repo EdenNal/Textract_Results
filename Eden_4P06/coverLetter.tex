@@ -1,7 +1,8 @@
-\documentclass[12pt]{article}
-\usepackage[margin=1in]{geometry}
+\documentclass[11pt]{article}
+\usepackage[margin=0.75in]{geometry}
 \usepackage{hyperref}
 \usepackage{parskip}   % space between paragraphs, no indent
+\setlength{\parskip}{0.5\baselineskip}
 
 \begin{document}
 
@@ -13,77 +14,44 @@ McMaster University \\
 Hamilton, Ontario, Canada \\
 \href{mailto:eden.nalian@gmail.com}{eden.nalian@gmail.com}
 
-\bigskip
+\smallskip
 \noindent \today
 
-\bigskip
+\smallskip
 
 %% ── Recipient block ───────────────────────────────────────────────────────────
 \noindent
+[PLACEHOLDER: Editor name, if known] \\
 Editorial Office \\
-\textit{PLOS Digital Health}
+\textit{[PLACEHOLDER: confirm target journal -- this draft previously said
+``PLOS Digital Health,'' but an earlier project ticket was written for
+``PLOS ONE''; confirm which journal before submission]}
 
-\bigskip
+\smallskip
 
 %% ── Salutation ────────────────────────────────────────────────────────────────
 \noindent Dear Editors,
 
-\bigskip
+\smallskip
 
 %% ── Body ──────────────────────────────────────────────────────────────────────
-We are writing to submit our manuscript, \textbf{``Validation of automated
+We are writing to submit our manuscript, \textbf{``Evaluation of automated
 table extraction for historical infectious-disease surveillance data,''} for consideration as a
-Research Article in \textit{PLOS Digital Health}.
+Research Article in \textit{[PLACEHOLDER: target journal name]}.
 
+Most historical public-health data remain locked in scanned paper documents, limiting large-scale epidemiological research. We evaluate Amazon Textract, a cloud-based machine-learning document-extraction service, as an alternative to manual data entry, applying it to the Canadian Disease Incidence Dataset (CANDID), an archive of weekly disease counts for Canadian provinces and territories from 1956 to 1958. After a documented post-processing pipeline, automated extraction achieved 92.9\% content-only cell-level agreement with the manually entered reference among cells numeric in that reference (95.6\% under a stricter denominator); the epidemiologically relevant statistics we derive from the extracted data (cross-correlations, epidemic peak timing, and growth rates) were generally similar to those from the manual data, with quantified, documented differences. This work sits within \textit{[PLACEHOLDER: target journal]}'s scope as a transparent, reproducible evaluation of a digital tool with direct implications for public health research practice, and we believe it will interest readers in digital health informatics, public health surveillance, and mathematical epidemiology.
 
-The majority of historical public health data remain locked in scanned paper
-documents, representing a major barrier to large-scale epidemiological research.
-Our manuscript addresses this barrier directly by rigorously evaluating
-Amazon Textract (a cloud-based machine-learning service for structured
-document extraction) as an  alternative to manual data entry for historical infectious disease tables.
-We apply the tool to the Canadian Disease Incidence Dataset (CANDID), an archive of weekly  disease counts spanning multiple Canadian provinces and territories from 1956 to 1958.
-This work sits squarely within \textit{PLOS Digital Health}'s scope: it uses
-a digital tool to advance the accessibility and usability of health data, and it provides a transparent, reproducible methodology evaluation with direct implications for public health research practice.
+We confirm this manuscript has not been published elsewhere and is not under consideration at any other journal, that all authors have read and approved it, and that the underlying data are publicly available (Data Availability statement). AI tools were used to assist with coding, \LaTeX\ formatting, consistency checking, and language editing, as disclosed in the manuscript (Section 4.3, ``Use of AI Tools''); all AI-assisted content was reviewed by the authors, who take full responsibility for the final manuscript. Funding information is in the submission system's Financial Disclosure field (see \texttt{submission/financial-disclosure.txt} in the repository) rather than the manuscript, per journal policy. Competing interests: [PLACEHOLDER -- manuscript currently states none declared].
 
-After a straightforward post-processing pipeline, automated extraction
-achieved over 95\% cell-level agreement with manually entered data.
-The extraction errors that remained were either small in magnitude and statistically negligible, or large and visually obvious, making them easy to detect and correct.
-We further demonstrate that epidemiologically important statistics derived from the extracted data (including disease cross-correlations, epidemic peak times, peak case counts, and exponential growth rates) were nearly
-identical to those computed from the manually entered dataset. This establishes
-that automated table extraction can produce data of sufficient quality for
-substantive epidemiological analysis.
-We also identify conditions under which automation is most beneficial and
-outline a clear post-processing workflow that other research groups can adopt
-for their own historical archives.
-
-
-The bottleneck of manual data entry has long constrained historical
-epidemiology, forcing researchers to focus on small datasets or invest
-enormous person-hours before any analysis can begin.
-As archives of historical health records continue to be scanned worldwide,
-tools and protocols like Amazon Textract   will become increasingly important for realising the full scientific value of these
-collections. We believe this paper will be of broad interest to readers working in
-digital health informatics, public health surveillance, mathematical
-epidemiology, and data science.
-
-We confirm that this manuscript has not been published elsewhere and is
-not under consideration at any other journal.
-All authors have read and approved the final manuscript.
-There are no competing interests to declare, and the study received no
-external funding.
-
-We have not indicated a preferred Academic Editor, and we leave the
-assignment entirely to the editorial team's discretion.
-Suggested reviewers are listed in the submission form.
+We have not indicated a preferred Academic Editor and leave the assignment to the editorial team's discretion. Suggested reviewers: [PLACEHOLDER]. Reviewers to exclude: [PLACEHOLDER].
 
 We look forward to hearing from you.
 
-\bigskip
+\smallskip
 
 \noindent Sincerely,
 
-\bigskip
-\bigskip
+\smallskip
 
 \noindent Eden Ofek Nalian (corresponding author) \\
 Steven C.\ Walker and David J.\,D.\ Earn  

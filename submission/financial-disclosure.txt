@@ -1,0 +1,10 @@
+Financial Disclosure (for the PLOS submission system's "Financial Disclosure" field)
+
+Per PLOS policy, this statement is entered directly into the Financial Disclosure
+field of the online submission system, not into the manuscript file itself (see
+https://journals.plos.org/plosone/s/submission-guidelines). Paste the text below
+into that field when submitting.
+
+---
+
+EON was funded by a James Stewart Undergraduate Research Award at McMaster University. DJDE was funded by the Natural Sciences and Engineering Research Council of Canada (NSERC), through a Discovery Grant and an Emerging Infectious Disease Modelling grant to the Canadian Network for Modelling Infectious Diseases (https://canmod.net/).
